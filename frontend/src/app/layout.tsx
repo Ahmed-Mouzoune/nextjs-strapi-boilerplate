@@ -1,8 +1,13 @@
 import { ThemeProvider } from "@/utils/theme-provider"
 import type { Metadata } from "next"
 
+import Header from "@/app/shared/header"
+import Footer from "@/app/shared/footer"
+
 import { inter } from "@/app/fonts"
+
 import "@/app/globals.css"
+import { cn } from "@/utils/class-names"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,9 +21,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={cn(
+          inter.className,
+          "bg-background text-foreground min-h-screen flex flex-col justify-between"
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
