@@ -1,6 +1,7 @@
 import qs from "qs"
 import { strapiGetUrl } from "@utils/strapi-helper"
 
+// Function to call any endpoint of the strapi api
 export async function strapiFetcher(
   path: string,
   urlParamsObject = {},
