@@ -4,7 +4,7 @@ export function strapiGetUrl(path: string = ""): string {
 }
 
 // Get path of media from strapi (can be external media or media hosted by strapi)
-export function strapiGetMedia(url: string | null): string {
+export function strapiGetMedia(url: string | null | undefined): string {
   if (!url) {
     return "/image-not-found.jpg"
   }

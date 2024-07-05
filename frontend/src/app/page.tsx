@@ -8,6 +8,7 @@ import {
 } from "@radix-ui/react-icons"
 import Image from "next/image"
 import Link from "next/link"
+import ArticleList from "./shared/article/article-list"
 
 export default function Home() {
   return (
@@ -65,6 +66,8 @@ export default function Home() {
           </Button>
         </div>
       </article>
+
+      <ArticleList />
     </main>
   )
 }
