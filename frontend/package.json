@@ -1,6 +1,9 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=18.15.0"
+  },
   "private": true,
   "scripts": {
     "clean": "rimraf -g \"{node_modules,.next,.cache}\"",
@@ -22,6 +25,8 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
+    "zod": "^3.23.8",
+    "@t3-oss/env-nextjs": "^0.10.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

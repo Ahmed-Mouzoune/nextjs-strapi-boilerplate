@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { strapiGetUrl } from '@utils/strapi-helper'
+import { env } from '@/env.mjs'
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -12,15 +13,14 @@ export async function strapiFetcher(
   options = {},
 ) {
   try {
-    const cacheDuration: number =
-      process.env.NODE_ENV === 'development' ? 0 : 60
+    const cacheDuration: number = env.NODE_ENV === 'development' ? 0 : 60
 
     // Merge default and user options
     const mergedOptions = {
       next: { revalidate: cacheDuration },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.STRAPI_API_PUBLIC_TOKEN}`,
+        Authorization: `Bearer ${env.STRAPI_API_PUBLIC_TOKEN}`,
       },
       ...options,
     }
@@ -31,7 +31,7 @@ export async function strapiFetcher(
       `/api${path}${queryString ? `?${queryString}` : ''}`,
     )}`
 
-    if (process.env.NODE_ENV === 'development') {
+    if (env.NODE_ENV === 'development') {
       await delay(2000)
     }
 

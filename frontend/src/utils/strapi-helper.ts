@@ -1,6 +1,8 @@
+import { env } from '@/env.mjs'
+
 // Get base url of strapi API
 export function strapiGetUrl(path: string = ''): string {
-  return `${process.env.STRAPI_URL || 'http://localhost:1337'}${path}`
+  return `${env.STRAPI_URL || 'http://localhost:1337'}${path}`
 }
 
 // Get path of media from strapi (can be external media or media hosted by strapi)
