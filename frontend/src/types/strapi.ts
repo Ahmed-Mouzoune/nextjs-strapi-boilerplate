@@ -1,4 +1,4 @@
-import type { Attribute, Common, Utils } from "@strapi/strapi"
+import type { Attribute, Common, Utils } from '@strapi/strapi'
 
 type IDProperty = { id: number }
 
@@ -40,9 +40,9 @@ type RelationValue<TAttribute extends Attribute.Attribute> =
               Attribute.RelationKind.WithTarget
             >,
             TRelationKind extends `${string}ToMany`
-              ? Omit<StrapiResponseCollection<TTarget>, "meta">
-              : StrapiResponse<TTarget> | null
-          ]
+              ? Omit<StrapiResponseCollection<TTarget>, 'meta'>
+              : StrapiResponse<TTarget> | null,
+          ],
         ],
         `TODO: handle other relation kind (${TRelationKind})`
       >
@@ -74,8 +74,8 @@ type MediaValue<TAttribute extends Attribute.Attribute> =
   TAttribute extends Attribute.Media<infer _TKind, infer TMultiple>
     ? Utils.Expression.If<
         TMultiple,
-        StrapiResponseCollection<"plugin::upload.file">,
-        StrapiResponse<"plugin::upload.file"> | null
+        StrapiResponseCollection<'plugin::upload.file'>,
+        StrapiResponse<'plugin::upload.file'> | null
       >
     : never
 
@@ -86,27 +86,27 @@ export type GetValue<TAttribute extends Attribute.Attribute> =
       [
         // Relation
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"relation">>,
-          RelationValue<TAttribute>
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'relation'>>,
+          RelationValue<TAttribute>,
         ],
         // DynamicZone
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"dynamiczone">>,
-          DynamicZoneValue<TAttribute>
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'dynamiczone'>>,
+          DynamicZoneValue<TAttribute>,
         ],
         // Component
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"component">>,
-          ComponentValue<TAttribute>
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'component'>>,
+          ComponentValue<TAttribute>,
         ],
         // Media
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"media">>,
-          MediaValue<TAttribute>
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'media'>>,
+          MediaValue<TAttribute>,
         ],
         // Fallback
         // If none of the above attribute type, fallback to the original Attribute.GetValue (while making sure it's an attribute)
-        [Utils.Expression.True, Attribute.GetValue<TAttribute, unknown>]
+        [Utils.Expression.True, Attribute.GetValue<TAttribute, unknown>],
       ],
       unknown
     >,
@@ -114,7 +114,7 @@ export type GetValue<TAttribute extends Attribute.Attribute> =
   >
 
 export interface StrapiResponseData<
-  TContentTypeUID extends Common.UID.ContentType
+  TContentTypeUID extends Common.UID.ContentType,
 > extends IDProperty {
   attributes: GetValues<TContentTypeUID>
 }
@@ -129,13 +129,13 @@ export interface StrapiResponseCollectionMetadata {
 }
 
 export interface StrapiResponse<
-  TContentTypeUID extends Common.UID.ContentType
+  TContentTypeUID extends Common.UID.ContentType,
 > {
   data: StrapiResponseData<TContentTypeUID>
 }
 
 export interface StrapiResponseCollection<
-  TContentTypeUID extends Common.UID.ContentType
+  TContentTypeUID extends Common.UID.ContentType,
 > {
   data: StrapiResponseData<TContentTypeUID>[]
   meta: StrapiResponseCollectionMetadata

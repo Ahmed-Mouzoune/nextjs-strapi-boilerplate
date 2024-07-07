@@ -1,7 +1,7 @@
-import { getArticles } from "@/server/article.action"
-import { cn } from "@/utils/class-names"
-import { strapiGetMedia } from "@/utils/strapi-helper"
-import ArticleCard, { ArticleCardLoading } from "./article-card"
+import { getArticles } from '@/server/article.action'
+import { cn } from '@/utils/class-names'
+import { strapiGetMedia } from '@/utils/strapi-helper'
+import ArticleCard, { ArticleCardLoading } from './article-card'
 
 export default async function ArticleList() {
   const articles = await getArticles()
@@ -9,8 +9,8 @@ export default async function ArticleList() {
   return (
     <section
       className={cn(
-        "container mx-auto py-12 px-4 md:px-6",
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        'container mx-auto px-4 py-12 md:px-6',
+        'grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3',
       )}
     >
       {articles?.data?.map((article) => (
@@ -33,8 +33,8 @@ export function ArticleListLoading() {
   return (
     <section
       className={cn(
-        "container mx-auto py-12 px-4 md:px-6",
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        'container mx-auto px-4 py-12 md:px-6',
+        'grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3',
       )}
     >
       {Array.from({ length: 3 }).map((_, i) => (

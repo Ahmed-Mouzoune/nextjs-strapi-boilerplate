@@ -1,26 +1,26 @@
-import { badgeVariants } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/utils/class-names"
+import { badgeVariants } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/utils/class-names'
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
-} from "@radix-ui/react-icons"
-import Link from "next/link"
-import { Suspense } from "react"
-import ArticleList, { ArticleListLoading } from "./shared/article/article-list"
+} from '@radix-ui/react-icons'
+import Link from 'next/link'
+import { Suspense } from 'react'
+import ArticleList, { ArticleListLoading } from './shared/article/article-list'
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center py-5 px-3">
+    <main className="flex flex-col items-center justify-center px-3 py-5">
       <article className="mx-auto max-w-screen-lg">
         <div className="text-center">
           <Link
-            href={"https://www.linkedin.com/in/ahmed-mouzoune/"}
+            href={'https://www.linkedin.com/in/ahmed-mouzoune/'}
             target="_blank"
-            className={cn(badgeVariants(), "mr-2")}
+            className={cn(badgeVariants(), 'mr-2')}
           >
-            <LinkedInLogoIcon className="size-4 mr-1" />
+            <LinkedInLogoIcon className="mr-1 size-4" />
             Ajoutez Ahmed MOUZOUNE
           </Link>
           <Link
@@ -33,10 +33,10 @@ export default function Home() {
         </div>
         <div className="mt-3 text-center">
           <h1 className="text-4xl font-bold">
-            Le{" "}
-            <span className="bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent">
+            Le{' '}
+            <span className="from-primary via-primary to-primary bg-gradient-to-r bg-clip-text text-transparent">
               template
-            </span>{" "}
+            </span>{' '}
             que j&apos;utilise pour tout mes projets
           </h1>
           <p className="mt-2">
@@ -44,23 +44,23 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-5 flex gap-5 justify-center max-sm:flex-col">
-          <Button size={"lg"} asChild>
+        <div className="mt-5 flex justify-center gap-5 max-sm:flex-col">
+          <Button size={'lg'} asChild>
             <Link
               href={
-                "https://github.com/Ahmed-Mouzoune/nextjs-strapi-boilerplate"
+                'https://github.com/Ahmed-Mouzoune/nextjs-strapi-boilerplate'
               }
             >
               Démarrer
             </Link>
           </Button>
-          <Button size={"lg"} variant={"outline"} asChild>
+          <Button size={'lg'} variant={'outline'} asChild>
             <Link
               href={
-                "https://github.com/Ahmed-Mouzoune/nextjs-strapi-boilerplate"
+                'https://github.com/Ahmed-Mouzoune/nextjs-strapi-boilerplate'
               }
             >
-              <GitHubLogoIcon className="size-5 mr-2" /> Mettre une ⭐ sur
+              <GitHubLogoIcon className="mr-2 size-5" /> Mettre une ⭐ sur
               Github
             </Link>
           </Button>
