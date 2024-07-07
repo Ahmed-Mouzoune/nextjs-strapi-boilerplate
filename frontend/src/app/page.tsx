@@ -6,8 +6,9 @@ import {
   LinkedInLogoIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons"
-import Image from "next/image"
 import Link from "next/link"
+import { Suspense } from "react"
+import ArticleList, { ArticleListLoading } from "./shared/article/article-list"
 
 export default function Home() {
   return (
@@ -65,6 +66,10 @@ export default function Home() {
           </Button>
         </div>
       </article>
+
+      <Suspense fallback={<ArticleListLoading />}>
+        <ArticleList />
+      </Suspense>
     </main>
   )
 }
