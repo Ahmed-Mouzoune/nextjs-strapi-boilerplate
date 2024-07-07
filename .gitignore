@@ -140,3 +140,4 @@ exports
 dist
 .strapi-updater.json
 .strapi-cloud.json
+.husky

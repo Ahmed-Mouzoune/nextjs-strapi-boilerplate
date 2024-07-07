@@ -1,0 +1,17 @@
+# Common ignore
+node_modules
+
+# Backend ignore
+backend/node_modules
+backend/.strapi
+backend/.tmp
+backend/.dist
+
+# Frontend ignore
+frontend/.next
+frontend/node_modules
+frontend/dist
+
+# Ignore specific files
+.DS_Store
+*.pem

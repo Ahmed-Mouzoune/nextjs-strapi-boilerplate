@@ -2,13 +2,13 @@
 const nextConfig = {
   // https://nextjs.org/docs/messages/next-image-unconfigured-host
   images: {
-    domains: ["localhost"],
+    domains: ['localhost'],
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/***",
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/***',
       },
     ],
   },
