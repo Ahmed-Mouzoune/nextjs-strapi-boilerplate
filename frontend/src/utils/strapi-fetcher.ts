@@ -1,6 +1,10 @@
 import qs from "qs"
 import { strapiGetUrl } from "@utils/strapi-helper"
 
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 // Function to call any endpoint of the strapi api
 export async function strapiFetcher(
   path: string,
@@ -26,6 +30,10 @@ export async function strapiFetcher(
     const requestUrl = `${strapiGetUrl(
       `/api${path}${queryString ? `?${queryString}` : ""}`
     )}`
+
+    if (process.env.NODE_ENV === "development") {
+      await delay(2000)
+    }
 
     // Trigger API call
     const response = await fetch(requestUrl, mergedOptions)

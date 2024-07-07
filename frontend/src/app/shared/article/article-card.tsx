@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 import { ArrowRightIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -40,6 +41,22 @@ export default function ArticleCard({
           Read more
           <ArrowRightIcon className="ml-1 h-4 w-4" />
         </Link>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function ArticleCardLoading() {
+  return (
+    <Card className="overflow-hidden rounded-lg shadow-lg">
+      <Skeleton className="w-full h-48" />
+      <CardContent className="p-6">
+        <Skeleton className="w-full mb-2 h-[32px]" />
+        <Skeleton className="w-full h-[48px] mb-4" />
+        <p className="inline-flex items-center text-primary font-medium">
+          Read more
+          <ArrowRightIcon className="ml-1 h-4 w-4" />
+        </p>
       </CardContent>
     </Card>
   )
