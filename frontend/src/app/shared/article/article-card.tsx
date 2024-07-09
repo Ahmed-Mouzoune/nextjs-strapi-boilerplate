@@ -1,9 +1,8 @@
+import { StrapiImage } from '@/components/strapi-image'
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowRightIcon } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 type ArticleCardProps = {
   slug: string
@@ -23,7 +22,7 @@ export default function ArticleCard({
 }: ArticleCardProps) {
   return (
     <Card className="overflow-hidden rounded-lg shadow-lg">
-      <Image
+      <StrapiImage
         src={image.src}
         alt={image.alt || `Image for ${image.alt}`}
         width={600}
