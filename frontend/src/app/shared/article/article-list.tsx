@@ -1,6 +1,5 @@
 import { getArticles } from '@/server/article.action'
 import { cn } from '@/utils/class-names'
-import { strapiGetMedia } from '@/utils/strapi-helper'
 import ArticleCard, { ArticleCardLoading } from './article-card'
 
 export default async function ArticleList() {
@@ -20,7 +19,7 @@ export default async function ArticleList() {
           title={article.attributes.title}
           description={article.attributes.description}
           image={{
-            src: strapiGetMedia(article.attributes.image?.data.attributes.url),
+            src: article.attributes.image?.data.attributes.url,
             alt: article.attributes.image?.data?.attributes?.alternativeText,
           }}
         />
