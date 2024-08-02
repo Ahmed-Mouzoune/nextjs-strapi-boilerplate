@@ -8,6 +8,7 @@
   "scripts": {
     "clean": "rimraf -g \"{node_modules,.next,.cache}\"",
     "dev": "next dev --turbo",
+    "check-types": "tsc --noEmit",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

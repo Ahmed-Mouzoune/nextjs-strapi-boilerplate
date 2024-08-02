@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
+    "check-types": "tsc --noEmit",
     "build": "strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy"

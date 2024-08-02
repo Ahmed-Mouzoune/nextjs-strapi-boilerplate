@@ -142,3 +142,7 @@ dist
 .strapi-cloud.json
 .husky
 .vscode
+
+
+# REPO
+.turbo
