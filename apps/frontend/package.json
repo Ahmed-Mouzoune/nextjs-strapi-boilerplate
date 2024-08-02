@@ -1,14 +1,14 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "packageManager": "npm@10.8.1",
   "engines": {
-    "node": ">=18.15.0"
+    "node": ">=18.17.0"
   },
   "private": true,
   "scripts": {
     "clean": "rimraf -g \"{node_modules,.next,.cache}\"",
     "dev": "next dev --turbo",
-    "check-types": "tsc --noEmit",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

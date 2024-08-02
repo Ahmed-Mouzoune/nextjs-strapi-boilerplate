@@ -5,6 +5,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:front": "turbo run dev --filter=./apps/frontend",
+    "dev:back": "turbo run dev --filter=./apps/backend",
     "lint": "turbo run lint"
   },
   "author": "",
@@ -13,6 +15,7 @@
     "turbo": "^2.0.11"
   },
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ]
 }
