@@ -1,7 +1,7 @@
 {
   "name": "nextjs-strapi-boilerplate",
   "private": true,
-  "packageManager": "pnpm@9.7.0",
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "dev": "turbo run dev",
     "dev:front": "turbo run dev --filter=./apps/frontend",
