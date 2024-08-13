@@ -1,21 +1,25 @@
 {
   "name": "nextjs-strapi-boilerplate",
-  "private": "true",
-  "packageManager": "npm@10.8.1",
+  "private": true,
+  "packageManager": "pnpm@9.7.0",
   "scripts": {
-    "build": "turbo run build",
     "dev": "turbo run dev",
-    "dev:front": "turbo run dev --filter=./apps/frontend",
-    "dev:back": "turbo run dev --filter=./apps/backend",
-    "lint": "turbo run lint"
+    "build": "turbo run build",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "prettier": "^3.1.1",
     "turbo": "^2.0.11"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "engines": {
+    "node": ">=18.17.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  }
 }
