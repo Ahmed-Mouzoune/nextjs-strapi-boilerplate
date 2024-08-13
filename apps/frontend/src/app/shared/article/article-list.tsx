@@ -19,7 +19,7 @@ export default async function ArticleList() {
           title={article.attributes.title}
           description={article.attributes.description}
           image={{
-            src: article.attributes.image?.data.attributes.url,
+            src: article.attributes.image?.data?.attributes?.url || '',
             alt: article.attributes.image?.data?.attributes?.alternativeText,
           }}
         />

@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@nextjs-strapi-boilerplate/frontend",
   "version": "0.1.0",
   "packageManager": "yarn@1.22.19",
   "engines": {
@@ -31,6 +31,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@nextjs-strapi-boilerplate/backend": "*",
     "@types/node": "^20",
     "@types/qs": "^6.9.15",
     "@types/react": "^18",
