@@ -1,19 +1,28 @@
 {
   "name": "nextjs-strapi-boilerplate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "copy-types.js",
+  "private": true,
+  "packageManager": "pnpm@9.7.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-type-front": "node copy-types.js",
-    "format": "prettier --write .",
-    "prepare": "husky install"
+    "dev": "turbo run dev",
+    "dev:front": "turbo run dev --filter=./apps/frontend",
+    "dev:back": "turbo run dev --filter=./apps/backend",
+    "build": "turbo run build",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^9.0.11",
-    "prettier": "^3.3.2",
-    "prettier-plugin-tailwindcss": "^0.6.5"
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "turbo": "^2.0.11"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18.17.0 <=20.x.x",
+    "npm": ">=6.0.0"
   }
 }

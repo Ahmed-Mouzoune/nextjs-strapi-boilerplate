@@ -2,10 +2,12 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
+  "packageManager": "npm@10.8.1",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
+    "check-types": "tsc --noEmit",
     "build": "strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy"
@@ -29,7 +31,7 @@
     "uuid": "c846fbc4-6ff3-4bb3-a7a8-804bc3c99d9a"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
+    "node": ">=18.17.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

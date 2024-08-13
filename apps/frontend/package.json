@@ -1,8 +1,9 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "packageManager": "npm@10.8.1",
   "engines": {
-    "node": ">=18.15.0"
+    "node": ">=18.17.0"
   },
   "private": true,
   "scripts": {
