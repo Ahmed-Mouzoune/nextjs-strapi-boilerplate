@@ -1,8 +1,9 @@
 {
-  "name": "backend",
+  "name": "@nextjs-strapi-boilerplate/backend",
   "private": true,
   "version": "0.1.0",
   "packageManager": "yarn@1.22.19",
+  "types": "./types",
   "description": "A Strapi application",
   "scripts": {
     "dev": "strapi develop",
