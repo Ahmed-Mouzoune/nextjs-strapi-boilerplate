@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "packageManager": "yarn@1.22.19",
-  "types": "./types",
+  "types": "./share-type",
   "description": "A Strapi application",
   "scripts": {
     "dev": "strapi develop",
