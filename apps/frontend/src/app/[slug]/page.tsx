@@ -1,5 +1,5 @@
 import BlockManager from "@/components/strapi/BlockManager";
-import { getPageBySlug } from "@/server/page.action";
+import { getPageBySlug } from "@/data-access/page.action";
 import { notFound } from "next/navigation";
 
 interface PageRootProps {

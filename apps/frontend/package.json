@@ -6,6 +6,7 @@
     "build": "next build",
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "next dev --turbo",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
     "lint": "next lint",
     "start": "next start"
   },
