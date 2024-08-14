@@ -15,7 +15,7 @@ export async function getPageBySlug(
         $eq: slug,
       },
     },
-    populate: "dynamicContent",
+    populate: ["dynamicContent", "seo"],
   };
 
   try {
