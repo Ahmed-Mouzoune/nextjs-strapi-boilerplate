@@ -3,6 +3,7 @@
 import Link from "next/link";
 import * as React from "react";
 
+import { APP_CONFIG } from "@/app.config";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -32,6 +33,10 @@ import {
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { useCallback } from "react";
+import type {
+  BreadcrumbList as RichSnippetBreadcrumb,
+  WithContext,
+} from "schema-dts";
 
 const ITEMS_TO_DISPLAY = 3;
 
@@ -62,8 +67,31 @@ export function BreadcrumbResponsive() {
     };
   });
 
+  const richSnippet: WithContext<RichSnippetBreadcrumb> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Accueil",
+        item: APP_CONFIG.website,
+      },
+      // @ts-ignore
+      ...segments.map((segment, index) => {
+        const segmentPath = `/${segments.slice(0, index + 1).join("/")}`;
+        return {
+          "@type": "ListItem",
+          position: index + 2,
+          name: formatPath(segment),
+          item: APP_CONFIG.website + segmentPath,
+        };
+      }),
+    ],
+  };
+
   return (
-    <Breadcrumb>
+    <Breadcrumb className="container my-2">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href={"/"}>Home</BreadcrumbLink>
@@ -148,6 +176,12 @@ export function BreadcrumbResponsive() {
           </BreadcrumbItem>
         ))}
       </BreadcrumbList>
+
+      <script
+        id="breadcrumb-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(richSnippet) }}
+      />
     </Breadcrumb>
   );
 }
