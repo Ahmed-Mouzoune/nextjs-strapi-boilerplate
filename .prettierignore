@@ -6,6 +6,7 @@ backend/node_modules
 backend/.strapi
 backend/.tmp
 backend/.dist
+backend/types
 
 # Frontend ignore
 frontend/.next
