@@ -24,7 +24,7 @@ export async function getPageBySlug(
       params,
     )) as StrapiResponseCollection<"api::page.page">;
 
-    return response.data[0];
+    return response?.data?.[0];
   } catch (error) {
     console.error(`> error while trying to retrieve page:${slug}`, error);
     return undefined;

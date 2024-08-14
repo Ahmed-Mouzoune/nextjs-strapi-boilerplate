@@ -10,13 +10,13 @@
     "plugins": [{ "name": "next" }]
   },
   "include": [
+    ".",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.mjs",
     ".next/types/**/*.ts",
-    "next.config.js",
-    "postcss.config.js"
+    "next.config.js"
   ],
   "exclude": ["node_modules"]
 }

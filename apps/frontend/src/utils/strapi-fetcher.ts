@@ -32,7 +32,7 @@ export async function strapiFetcher(
     )}`;
 
     if (env.NODE_ENV === "development") {
-      await delay(2000);
+      await delay(1000);
     }
 
     // Trigger API call
