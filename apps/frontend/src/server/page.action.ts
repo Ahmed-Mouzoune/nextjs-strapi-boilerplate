@@ -30,3 +30,13 @@ export async function getPageBySlug(
     return undefined
   }
 }
+
+export async function getPages(): Promise<
+  StrapiResponseCollection<'api::page.page'>
+> {
+  const params = {
+    sort: ['publishedAt:desc'],
+  }
+
+  return await strapiFetcher(`/pages`, params)
+}

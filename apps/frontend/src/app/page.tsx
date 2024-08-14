@@ -9,6 +9,7 @@ import {
 import Link from 'next/link'
 import { Suspense } from 'react'
 import ArticleList, { ArticleListLoading } from './shared/article/article-list'
+import PageList from './shared/page/page-list'
 
 export default function Home() {
   return (
@@ -66,6 +67,8 @@ export default function Home() {
           </Button>
         </div>
       </article>
+
+      <PageList />
 
       <Suspense fallback={<ArticleListLoading />}>
         <ArticleList />
