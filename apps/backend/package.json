@@ -6,12 +6,12 @@
   "types": "./share-type",
   "description": "A Strapi application",
   "scripts": {
+    "strapi": "strapi",
     "dev": "strapi develop",
     "start": "strapi start",
-    "check-types": "tsc --noEmit",
     "build": "strapi build",
-    "strapi": "strapi",
-    "deploy": "strapi deploy"
+    "deploy": "strapi deploy",
+    "clean": "git clean -xdf .turbo .cache node_modules"
   },
   "devDependencies": {},
   "dependencies": {

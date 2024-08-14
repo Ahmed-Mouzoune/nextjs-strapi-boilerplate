@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Page"
+    "displayName": "Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -34,6 +35,18 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "dynamicContent": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "block.button",
+        "block.wysiwig"
+      ]
     }
   }
 }

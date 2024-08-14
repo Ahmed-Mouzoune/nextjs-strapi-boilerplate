@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "clean": "rimraf -g \"{node_modules,.next,.cache}\"",
+    "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
