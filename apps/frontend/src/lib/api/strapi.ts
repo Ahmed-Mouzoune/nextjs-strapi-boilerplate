@@ -1,5 +1,7 @@
+import { APP_CONFIG, FALLBACK_SEO } from "@/app.config";
 import { env } from "@/env.mjs";
-import type { Common } from "@nextjs-strapi-boilerplate/backend";
+import type { Common, GetValues } from "@nextjs-strapi-boilerplate/backend";
+import type { Metadata } from "next";
 import qs from "qs";
 
 type ApiContentTypeUid = Extract<Common.UID.ContentType, `api::${string}`>;
@@ -13,7 +15,7 @@ const API_ENDPOINTS: {
 
 // Get base url of strapi API
 export function strapiGetUrl(path = ""): string {
-  return `${env.STRAPI_URL || "http://localhost:1337"}${path}`;
+  return `${env.STRAPI_URL ?? "http://localhost:1337"}${path}`;
 }
 
 // Get path of media from strapi (can be external media or media hosted by strapi)
@@ -23,12 +25,71 @@ export function strapiGetMedia(url: string | null | undefined): string | null {
   }
 
   // Return the full URL if the media is hosted on an external provider
-  if (url.startsWith("http") || url.startsWith("//")) {
+  if (url.startsWith("http") ?? url.startsWith("//")) {
     return url;
   }
 
   // Otherwise prepend the URL path with the Strapi URL
   return `${strapiGetUrl()}${url}`;
+}
+
+export function strapiGetMetaData(
+  metadata: GetValues<"shared.seo"> | null,
+  pageUrl: string,
+): Metadata {
+  if (!metadata) return FALLBACK_SEO;
+
+  const openGraph = {
+    type: "website",
+    locale: "fr_FR",
+    title: metadata.metaTitle,
+    description: metadata?.metaDescription,
+    url: metadata?.canonicalURL ?? pageUrl,
+    image: {
+      url: strapiGetMedia(metadata.metaImage?.data?.attributes?.url),
+      alt: metadata?.metaImage
+        ? (metadata.metaImage?.data?.attributes?.alternativeText ??
+          `Image seo ${APP_CONFIG.name}`)
+        : `Image seo ${APP_CONFIG.name}`,
+      width: metadata.metaImage
+        ? metadata.metaImage?.data?.attributes?.width
+        : 1200,
+      height: metadata.metaImage
+        ? metadata.metaImage?.data?.attributes?.height
+        : 630,
+    },
+  };
+
+  const twitterCard = {
+    card: "summary_large_image",
+    site: APP_CONFIG.twitter,
+    title: metadata?.metaTitle,
+    description: metadata?.metaDescription,
+    image: strapiGetMedia(metadata.metaImage?.data?.attributes?.url),
+  };
+
+  return {
+    title: metadata.metaTitle,
+    description: metadata.metaDescription,
+    keywords: metadata.keywords,
+    robots: metadata.metaRobots,
+    creator: APP_CONFIG.creator,
+    authors: APP_CONFIG.authors,
+    openGraph,
+    twitter: twitterCard,
+  };
+}
+
+export function strapiGetUrlFromSlug(
+  slug: string,
+  entity?: ApiContentTypeUid,
+): string {
+  switch (entity) {
+    case "api::article.article":
+      return `${APP_CONFIG.website}/articles/${slug}`;
+    default:
+      return `${APP_CONFIG.website}/${slug}`;
+  }
 }
 
 function delay(ms: number) {
