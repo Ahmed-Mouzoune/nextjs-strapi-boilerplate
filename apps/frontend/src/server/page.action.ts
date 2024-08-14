@@ -20,7 +20,7 @@ export async function getPageBySlug(
 
   try {
     const response = (await strapiFetcher(
-      "/pages",
+      "api::page.page",
       params,
     )) as StrapiResponseCollection<"api::page.page">;
 
@@ -38,5 +38,5 @@ export async function getPages(): Promise<
     sort: ["publishedAt:desc"],
   };
 
-  return await strapiFetcher(`/pages`, params);
+  return await strapiFetcher("api::page.page", params);
 }
