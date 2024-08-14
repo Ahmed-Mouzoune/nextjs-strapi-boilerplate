@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@/utils/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
 
 import Footer from "@/app/shared/footer";
