@@ -1,5 +1,8 @@
 # Next.js + Strapi Boilerplate
 
+> [!WARNING]
+> This project still under construction
+
 This is a monorepo boilerplate setup using Next.js for the frontend and Strapi for the backend, managed with `yarn` workspaces and `turbo`. This setup is designed to streamline the development of full-stack applications, providing a solid foundation with best practices and tools.
 
 ## Table of Contents
