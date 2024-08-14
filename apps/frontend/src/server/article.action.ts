@@ -11,5 +11,5 @@ export async function getArticles(): Promise<
     populate: "image",
   };
 
-  return await strapiFetcher(`/articles`, params);
+  return await strapiFetcher("api::article.article", params);
 }
