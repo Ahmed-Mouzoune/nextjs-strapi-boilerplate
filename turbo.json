@@ -1,19 +1,22 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"globalDependencies": ["**/.env"],
-	"tasks": {
-		"build": {
-			"inputs": ["$TURBO_DEFAULT$", ".env*"],
-			"outputs": ["dist/**", ".next/**", "!.next/cache/**"],
-			"dependsOn": ["^build"]
-		},
-		"dev": {
-			"cache": false,
-			"persistent": true
-		},
-		"lint": {},
-		"clean": {
-			"cache": false
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env"],
+  "tasks": {
+    "build": {
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "format": {
+      "outputs": ["node_modules/.cache/.prettiercache"]
+    },
+    "lint": {},
+    "clean": {
+      "cache": false
+    }
+  }
 }

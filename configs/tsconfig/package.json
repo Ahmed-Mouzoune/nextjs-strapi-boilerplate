@@ -1,0 +1,9 @@
+{
+  "name": "@nextjs-strapi-boilerplate/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "description": "typescript config",
+  "publishConfig": {
+    "access": "public"
+  }
+}

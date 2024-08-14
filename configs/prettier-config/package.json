@@ -1,0 +1,27 @@
+{
+  "name": "@nextjs-strapi-boilerplate/prettier-config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "prettier config",
+  "main": "base.cjs",
+  "files": [
+    "base.cjs",
+    "tailwindcss.mjs"
+  ],
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\""
+  },
+  "prettier": "./base.cjs",
+  "dependencies": {
+    "prettier": "^3.1.1",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "prettier-plugin-packagejson": "^2.4.7",
+    "prettier-plugin-tailwindcss": "^0.5.9"
+  },
+  "devDependencies": {
+    "@nextjs-strapi-boilerplate/tsconfig": "*",
+    "prettier": "^3.0.3",
+    "typescript": "^5.3.3"
+  }
+}
