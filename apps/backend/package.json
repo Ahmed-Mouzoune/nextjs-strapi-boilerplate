@@ -1,39 +1,44 @@
 {
-	"name": "@nextjs-strapi-boilerplate/backend",
-	"private": true,
-	"version": "0.1.0",
-	"packageManager": "yarn@1.22.19",
-	"types": "./share-type",
-	"description": "A Strapi application",
-	"scripts": {
-		"strapi": "strapi",
-		"dev": "strapi develop",
-		"start": "strapi start",
-		"build": "strapi build",
-		"deploy": "strapi deploy",
-		"clean": "git clean -xdf .turbo .cache node_modules"
-	},
-	"devDependencies": {},
-	"dependencies": {
-		"@strapi/strapi": "4.25.0",
-		"@strapi/plugin-users-permissions": "4.25.0",
-		"@strapi/plugin-i18n": "4.25.0",
-		"@strapi/plugin-cloud": "4.25.0",
-		"better-sqlite3": "8.6.0",
-		"react": "^18.0.0",
-		"react-dom": "^18.0.0",
-		"react-router-dom": "5.3.4",
-		"styled-components": "5.3.3"
-	},
-	"author": {
-		"name": "A Strapi developer"
-	},
-	"strapi": {
-		"uuid": "c846fbc4-6ff3-4bb3-a7a8-804bc3c99d9a"
-	},
-	"engines": {
-		"node": ">=18.17.0 <=20.x.x",
-		"npm": ">=6.0.0"
-	},
-	"license": "MIT"
+  "name": "@nextjs-strapi-boilerplate/backend",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "yarn@1.22.19",
+  "types": "./share-type",
+  "description": "A Strapi application",
+  "scripts": {
+    "strapi": "strapi",
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "deploy": "strapi deploy",
+    "clean": "git clean -xdf .turbo .cache node_modules"
+  },
+  "devDependencies": {
+    "@nextjs-strapi-boilerplate/eslint-config": "*",
+    "@nextjs-strapi-boilerplate/prettier-config": "*",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1"
+  },
+  "dependencies": {
+    "@strapi/strapi": "4.25.0",
+    "@strapi/plugin-users-permissions": "4.25.0",
+    "@strapi/plugin-i18n": "4.25.0",
+    "@strapi/plugin-cloud": "4.25.0",
+    "better-sqlite3": "8.6.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "c846fbc4-6ff3-4bb3-a7a8-804bc3c99d9a"
+  },
+  "engines": {
+    "node": ">=18.17.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
 }

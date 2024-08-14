@@ -1,3 +1,8 @@
 {
-	"extends": ["next/babel", "next/core-web-vitals"]
+  "root": true,
+  "extends": [
+    "@nextjs-strapi-boilerplate/eslint-config/base",
+    "@nextjs-strapi-boilerplate/eslint-config/nextjs",
+    "@nextjs-strapi-boilerplate/eslint-config/react"
+  ]
 }
