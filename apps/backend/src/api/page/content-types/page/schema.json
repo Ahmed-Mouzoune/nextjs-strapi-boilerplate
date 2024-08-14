@@ -43,10 +43,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "block.button",
-        "block.wysiwig"
-      ]
+      "components": ["block.button", "block.wysiwig"]
     },
     "seo": {
       "type": "component",
