@@ -5,8 +5,8 @@ import Footer from "@/app/shared/footer";
 import Header from "@/app/shared/header";
 
 import { inter } from "@/app/fonts";
+import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { cn } from "@/utils/class-names";
 
 export const metadata: Metadata = {
   title: "Create Next App",

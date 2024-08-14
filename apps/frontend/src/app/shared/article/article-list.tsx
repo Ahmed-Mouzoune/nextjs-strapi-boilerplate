@@ -1,5 +1,5 @@
 import { getArticles } from "@/data-access/article.action";
-import { cn } from "@/utils/class-names";
+import { cn } from "@/lib/utils";
 import ArticleCard, { ArticleCardLoading } from "./article-card";
 
 export default async function ArticleList() {

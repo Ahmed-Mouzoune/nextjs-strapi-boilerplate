@@ -1,6 +1,6 @@
 import { badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/utils/class-names";
+import { cn } from "@/lib/utils";
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,

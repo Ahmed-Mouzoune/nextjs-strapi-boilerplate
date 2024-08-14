@@ -1,6 +1,7 @@
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { getPages } from "@/server/page.action";
-import { cn } from "@/utils/class-names";
+import { getPages } from "@/data-access/page.action";
+import { cn } from "@/lib/utils";
+
 import Link from "next/link";
 
 export default async function PageList() {
