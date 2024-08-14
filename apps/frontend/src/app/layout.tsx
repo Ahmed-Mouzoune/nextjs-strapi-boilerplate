@@ -7,6 +7,7 @@ import Header from "@/app/shared/header";
 import { inter } from "@/app/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import { BreadcrumbResponsive } from "./layouts/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,6 +29,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
+          <BreadcrumbResponsive />
           {children}
           <Footer />
         </ThemeProvider>

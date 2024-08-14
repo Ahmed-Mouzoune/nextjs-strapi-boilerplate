@@ -30,28 +30,47 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useMediaQuery } from "@/hooks/use-media-query";
-
-const items = [
-  { href: "#", label: "Home" },
-  { href: "#", label: "Documentation" },
-  { href: "#", label: "Building Your Application" },
-  { href: "#", label: "Data Fetching" },
-  { label: "Caching and Revalidating" },
-];
+import { useSelectedLayoutSegments } from "next/navigation";
+import { useCallback } from "react";
 
 const ITEMS_TO_DISPLAY = 3;
 
 export function BreadcrumbResponsive() {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const segments = useSelectedLayoutSegments();
+
+  const formatPath = useCallback((str: string): string => {
+    const words = str.split("-");
+    const capitalizedWords = words.map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1),
+    );
+    return capitalizedWords.join(" ");
+  }, []);
+
+  if (segments.length === 0) {
+    return null;
+  }
+
+  const items = segments.map((segment, i) => {
+    return {
+      href:
+        i === segments.length - 1
+          ? undefined
+          : `${segments.slice(0, i + 1).join("/")}`,
+      label: formatPath(segment),
+    };
+  });
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href={items[0].href}>{items[0].label}</BreadcrumbLink>
+          <BreadcrumbLink href={"/"}>Home</BreadcrumbLink>
         </BreadcrumbItem>
+
         <BreadcrumbSeparator />
+
         {items.length > ITEMS_TO_DISPLAY ? (
           <>
             <BreadcrumbItem>
@@ -108,6 +127,7 @@ export function BreadcrumbResponsive() {
             <BreadcrumbSeparator />
           </>
         ) : null}
+
         {items.slice(-ITEMS_TO_DISPLAY + 1).map((item, index) => (
           <BreadcrumbItem key={index}>
             {item.href ? (
