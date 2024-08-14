@@ -1,4 +1,4 @@
-import { getArticles } from "@/server/article.action";
+import { getArticles } from "@/data-access/article.action";
 import { cn } from "@/utils/class-names";
 import ArticleCard, { ArticleCardLoading } from "./article-card";
 
