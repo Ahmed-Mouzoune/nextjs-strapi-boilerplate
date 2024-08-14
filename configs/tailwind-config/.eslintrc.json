@@ -1,0 +1,4 @@
+{
+  "root": true,
+  "extends": ["@nextjs-strapi-boilerplate/eslint-config/base"]
+}

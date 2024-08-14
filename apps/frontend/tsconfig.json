@@ -1,37 +1,20 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"noEmit": true,
-		"forceConsistentCasingInFileNames": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"incremental": true,
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
-		"paths": {
-			"@/*": ["src/*"],
-			"@public/*": ["public/*"],
-			"@utils/*": ["src/utils/*"]
-		}
-	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"**/*.mjs",
-		".next/types/**/*.ts",
-		"next.config.js"
-	],
-	"exclude": ["node_modules"]
+  "extends": "@nextjs-strapi-boilerplate/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"],
+      "@public/*": ["public/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mjs",
+    ".next/types/**/*.ts",
+    "next.config.js",
+    "postcss.config.js"
+  ],
+  "exclude": ["node_modules"]
 }
