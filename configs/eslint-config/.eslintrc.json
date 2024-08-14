@@ -1,4 +1,4 @@
 {
-    "root": true,
-    "extends": ["./base.js"]
+  "root": true,
+  "extends": ["./base.js"]
 }

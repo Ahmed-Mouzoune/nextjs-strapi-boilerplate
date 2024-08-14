@@ -1,5 +1,5 @@
 {
-    "extends": "@nextjs-strapi-boilerplate/tsconfig/base.json",
-    "include": ["."],
-    "exclude": ["node_modules"]
+  "extends": "@nextjs-strapi-boilerplate/tsconfig/base.json",
+  "include": ["."],
+  "exclude": ["node_modules"]
 }
