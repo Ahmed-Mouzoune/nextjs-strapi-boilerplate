@@ -1,0 +1,37 @@
+{
+	"collectionName": "components_block_buttons",
+	"info": {
+		"displayName": "Button",
+		"icon": "oneToMany"
+	},
+	"options": {},
+	"attributes": {
+		"text": {
+			"type": "string",
+			"required": true
+		},
+		"link": {
+			"type": "string",
+			"required": true
+		},
+		"size": {
+			"type": "enumeration",
+			"enum": ["default", "sm", "lg", "icon"],
+			"default": "default",
+			"required": true
+		},
+		"variant": {
+			"type": "enumeration",
+			"enum": [
+				"default",
+				"destructive",
+				"outline",
+				"secondary",
+				"ghost",
+				"link"
+			],
+			"required": true,
+			"default": "default"
+		}
+	}
+}

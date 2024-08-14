@@ -47,6 +47,7 @@ This is a monorepo boilerplate setup using Next.js for the frontend and Strapi f
    ```
 
    **TODO:** explain how to generate env variable & access token from strapi for front
+
 3. Running the Development Servers
 
    To start both the frontend and backend in development mode:

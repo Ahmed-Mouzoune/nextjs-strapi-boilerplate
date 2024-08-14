@@ -1,0 +1,14 @@
+{
+	"collectionName": "components_block_wysiwigs",
+	"info": {
+		"displayName": "Wysiwig",
+		"icon": "file"
+	},
+	"options": {},
+	"attributes": {
+		"content": {
+			"type": "richtext",
+			"required": true
+		}
+	}
+}
