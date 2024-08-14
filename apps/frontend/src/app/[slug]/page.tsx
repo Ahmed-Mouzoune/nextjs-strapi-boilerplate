@@ -2,11 +2,11 @@ import BlockManager from "@/components/strapi/BlockManager";
 import { getPageBySlug } from "@/server/page.action";
 import { notFound } from "next/navigation";
 
-type PageRootProps = {
+interface PageRootProps {
   params: {
     slug: string;
   };
-};
+}
 export default async function PageRoot({ params }: PageRootProps) {
   const page = await getPageBySlug(params.slug);
 

@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
-type ArticleCardProps = {
+interface ArticleCardProps {
   slug: string;
   title: string;
   description: string;
@@ -12,7 +12,7 @@ type ArticleCardProps = {
     src: string;
     alt?: string;
   };
-};
+}
 
 export default function ArticleCard({
   slug,
@@ -24,7 +24,7 @@ export default function ArticleCard({
     <Card className="overflow-hidden rounded-lg shadow-lg">
       <StrapiImage
         src={image.src}
-        alt={image.alt || `Image for ${image.alt}`}
+        alt={image.alt ?? `Image for ${image.alt}`}
         width={600}
         height={400}
         className="h-48 w-full object-cover"

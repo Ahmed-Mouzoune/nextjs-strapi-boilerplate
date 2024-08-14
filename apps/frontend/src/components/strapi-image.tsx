@@ -1,6 +1,7 @@
 import { cn } from "@/utils/class-names";
 import { strapiGetMedia } from "@/utils/strapi-helper";
-import Image, { ImageProps } from "next/image";
+import type { ImageProps } from "next/image";
+import Image from "next/image";
 
 interface StrapiImageProps {
   src: string;

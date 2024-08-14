@@ -1,7 +1,7 @@
 import { env } from "@/env.mjs";
 
 // Get base url of strapi API
-export function strapiGetUrl(path: string = ""): string {
+export function strapiGetUrl(path = ""): string {
   return `${env.STRAPI_URL || "http://localhost:1337"}${path}`;
 }
 

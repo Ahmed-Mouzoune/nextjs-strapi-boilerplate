@@ -1,5 +1,4 @@
-import type { Common } from "@nextjs-strapi-boilerplate/backend";
-import { GetValues } from "@nextjs-strapi-boilerplate/backend";
+import type { Common, GetValues } from "@nextjs-strapi-boilerplate/backend";
 import StrapiButton from "./strapi-button";
 import StrapiWysiwig from "./strapi-wisiwig";
 
@@ -12,16 +11,16 @@ const BlockMapper: {
   "block.wysiwig": StrapiWysiwig,
 };
 
-type Block = {
+interface Block {
   id: number;
   __component: BlockUid;
-};
+}
 
 type BlockAndContent = Block & GetValues<Block["__component"]>;
 
-type TBlockManager = {
+interface TBlockManager {
   blocks: BlockAndContent[];
-};
+}
 
 export default function BlockManager({ blocks }: TBlockManager) {
   return blocks?.map(getBlockComponent);

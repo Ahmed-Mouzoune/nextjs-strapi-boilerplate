@@ -1,7 +1,7 @@
 "use server";
 
 import { strapiFetcher } from "@/utils/strapi-fetcher";
-import {
+import type {
   StrapiResponseCollection,
   StrapiResponseData,
 } from "@nextjs-strapi-boilerplate/backend";

@@ -1,11 +1,13 @@
 {
   "extends": "@nextjs-strapi-boilerplate/tsconfig/nextjs.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@public/*": ["public/*"],
       "@utils/*": ["src/utils/*"]
-    }
+    },
+    "plugins": [{ "name": "next" }]
   },
   "include": [
     "next-env.d.ts",
