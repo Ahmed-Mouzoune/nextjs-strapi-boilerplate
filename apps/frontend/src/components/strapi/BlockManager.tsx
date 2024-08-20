@@ -2,7 +2,7 @@ import type { Common, GetValues } from "@nextjs-strapi-boilerplate/backend";
 import StrapiButton from "./strapi-button";
 import StrapiWysiwig from "./strapi-wisiwig";
 
-type BlockUid = Common.UID.Component;
+type BlockUid = Extract<Common.UID.Component, `block.${string}`>;
 
 const BlockMapper: {
   [K in BlockUid]: (props: GetValues<K>) => JSX.Element;
