@@ -20,11 +20,10 @@
     "prettier": "^3.1.1"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "4.25.8",
-    "@strapi/plugin-i18n": "4.25.0",
-    "@strapi/plugin-seo": "^1.9.9",
-    "@strapi/plugin-users-permissions": "4.25.8",
     "@strapi/strapi": "4.25.0",
+    "@strapi/plugin-users-permissions": "4.25.8",
+    "@strapi/plugin-i18n": "4.25.8",
+    "@strapi/plugin-cloud": "4.25.8",
     "better-sqlite3": "8.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
