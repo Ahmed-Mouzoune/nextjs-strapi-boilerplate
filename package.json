@@ -1,6 +1,7 @@
 {
   "name": "nextjs-strapi-boilerplate",
   "private": true,
+  "author": "Abderrahmane MOUZOUNE",
   "packageManager": "yarn@1.22.19",
   "workspaces": [
     "apps/*",
@@ -8,15 +9,17 @@
     "configs/*"
   ],
   "scripts": {
+    "init-env": "yarn init-env:back && yarn init-env:front",
+    "init-env:back": "cp apps/backend/.env.example apps/backend/.env",
+    "init-env:front": "cp apps/frontend/.env.local.example apps/frontend/.env.local",
     "dev": "turbo run dev",
     "dev:front": "turbo run dev --filter=./apps/frontend",
     "dev:back": "turbo run dev --filter=./apps/backend",
     "build": "turbo run build",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean && git clean -xdf .turbo node_modules",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "husky": "^9.1.4",
@@ -25,6 +28,7 @@
   },
   "engines": {
     "node": ">=18.17.0 <=20.x.x",
-    "npm": ">=6.0.0"
+    "npm": ">=9.0.0",
+    "yarn": ">=1.22.0"
   }
 }

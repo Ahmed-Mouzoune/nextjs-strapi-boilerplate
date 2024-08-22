@@ -1,64 +1,41 @@
-import type { Schema, Attribute } from "@strapi/strapi";
-
-export interface BlockButton extends Schema.Component {
-  collectionName: "components_block_buttons";
-  info: {
-    displayName: "Button";
-    icon: "oneToMany";
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    link: Attribute.String & Attribute.Required;
-    size: Attribute.Enumeration<["default", "sm", "lg", "icon"]> &
-      Attribute.Required &
-      Attribute.DefaultTo<"default">;
-    variant: Attribute.Enumeration<
-      ["default", "destructive", "outline", "secondary", "ghost", "link"]
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<"default">;
-  };
-}
+import type { Schema, Attribute } from '@strapi/strapi';
 
 export interface BlockWysiwig extends Schema.Component {
-  collectionName: "components_block_wysiwigs";
+  collectionName: 'components_block_wysiwigs';
   info: {
-    displayName: "Wysiwig";
-    icon: "file";
+    displayName: 'Wysiwig';
+    icon: 'file';
   };
   attributes: {
     content: Attribute.RichText & Attribute.Required;
   };
 }
 
-export interface SharedMetaSocial extends Schema.Component {
-  collectionName: "components_shared_meta_socials";
+export interface BlockButton extends Schema.Component {
+  collectionName: 'components_block_buttons';
   info: {
-    displayName: "metaSocial";
-    icon: "project-diagram";
+    displayName: 'Button';
+    icon: 'oneToMany';
   };
   attributes: {
-    socialNetwork: Attribute.Enumeration<["Facebook", "Twitter"]> &
-      Attribute.Required;
-    title: Attribute.String &
+    text: Attribute.String & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    size: Attribute.Enumeration<['default', 'sm', 'lg', 'icon']> &
       Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    description: Attribute.String &
+      Attribute.DefaultTo<'default'>;
+    variant: Attribute.Enumeration<
+      ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link']
+    > &
       Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 65;
-      }>;
-    image: Attribute.Media<"images" | "files" | "videos">;
+      Attribute.DefaultTo<'default'>;
   };
 }
 
 export interface SharedSeo extends Schema.Component {
-  collectionName: "components_shared_seos";
+  collectionName: 'components_shared_seos';
   info: {
-    displayName: "seo";
-    icon: "search";
+    displayName: 'seo';
+    icon: 'search';
   };
   attributes: {
     metaTitle: Attribute.String &
@@ -72,8 +49,8 @@ export interface SharedSeo extends Schema.Component {
         minLength: 50;
         maxLength: 160;
       }>;
-    metaImage: Attribute.Media<"images" | "files" | "videos">;
-    metaSocial: Attribute.Component<"shared.meta-social", true>;
+    metaImage: Attribute.Media<'images' | 'files' | 'videos'>;
+    metaSocial: Attribute.Component<'shared.meta-social', true>;
     keywords: Attribute.Text;
     metaRobots: Attribute.String;
     structuredData: Attribute.JSON;
@@ -82,13 +59,36 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
-declare module "@strapi/types" {
+export interface SharedMetaSocial extends Schema.Component {
+  collectionName: 'components_shared_meta_socials';
+  info: {
+    displayName: 'metaSocial';
+    icon: 'project-diagram';
+  };
+  attributes: {
+    socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
+      Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    description: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 65;
+      }>;
+    image: Attribute.Media<'images' | 'files' | 'videos'>;
+  };
+}
+
+declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      "block.button": BlockButton;
-      "block.wysiwig": BlockWysiwig;
-      "shared.meta-social": SharedMetaSocial;
-      "shared.seo": SharedSeo;
+      'block.wysiwig': BlockWysiwig;
+      'block.button': BlockButton;
+      'shared.seo': SharedSeo;
+      'shared.meta-social': SharedMetaSocial;
     }
   }
 }
