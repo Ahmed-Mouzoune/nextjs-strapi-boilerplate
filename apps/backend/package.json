@@ -2,7 +2,6 @@
   "name": "@nextjs-strapi-boilerplate/backend",
   "private": true,
   "version": "0.1.0",
-  "packageManager": "yarn@1.22.19",
   "types": "./share-type",
   "description": "A Strapi application",
   "scripts": {
@@ -24,7 +23,7 @@
     "@strapi/plugin-i18n": "4.25.8",
     "@strapi/plugin-seo": "^1.9.9",
     "@strapi/plugin-users-permissions": "4.25.8",
-    "@strapi/strapi": "4.25.0",
+    "@strapi/strapi": "4.25.8",
     "better-sqlite3": "8.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
