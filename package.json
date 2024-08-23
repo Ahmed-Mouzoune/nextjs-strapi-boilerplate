@@ -9,9 +9,7 @@
     "configs/*"
   ],
   "scripts": {
-    "init-env": "yarn init-env:back && yarn init-env:front",
-    "init-env:back": "cp apps/backend/.env.example apps/backend/.env",
-    "init-env:front": "cp apps/frontend/.env.local.example apps/frontend/.env.local",
+    "init-env": "node init-env.js",
     "dev": "turbo run dev",
     "dev:front": "turbo run dev --filter=./apps/frontend",
     "dev:back": "turbo run dev --filter=./apps/backend",
