@@ -10,4 +10,11 @@ export default {
     "./src/**/*.{ts,tsx}",
   ],
   presets: [baseConfig],
+  theme: {
+    extend: {
+      fontFamily: {
+        lexend: ["Lexend Deca", "sans-serif"],
+      },
+    },
+  },
 } satisfies Config;

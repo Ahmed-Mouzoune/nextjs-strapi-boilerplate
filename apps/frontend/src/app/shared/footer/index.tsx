@@ -23,34 +23,40 @@ export default function Footer() {
           </Button>
         </div>
 
-        <div className="flex gap-5 md:gap-2">
-          <Link
-            href={"https://github.com/AbderrahmaneMouzoune"}
-            className="transition-colors hover:text-primary"
-            target="_blank"
-          >
-            <GitHubLogoIcon className="size-5" />
-          </Link>
+        <div className="flex items-center gap-5 md:gap-2">
+          <Button variant={"ghost"} asChild size={"icon"}>
+            <Link
+              href={"https://github.com/AbderrahmaneMouzoune"}
+              className="transition-colors hover:text-primary"
+              target="_blank"
+            >
+              <GitHubLogoIcon className="size-4" />
+            </Link>
+          </Button>
 
-          <hr className="size-5 w-[1px] bg-accent-foreground opacity-10" />
+          <hr className="size-4 w-[1px] bg-accent-foreground opacity-10" />
 
-          <Link
-            href={"https://www.linkedin.com/in/abderrahmane-mouzoune/"}
-            className="transition-colors hover:text-primary"
-            target="_blank"
-          >
-            <LinkedInLogoIcon className="size-5" />
-          </Link>
+          <Button variant={"ghost"} size={"icon"} asChild>
+            <Link
+              href={"https://www.linkedin.com/in/abderrahmane-mouzoune/"}
+              className="transition-colors hover:text-primary"
+              target="_blank"
+            >
+              <LinkedInLogoIcon className="size-4" />
+            </Link>
+          </Button>
 
-          <hr className="size-5 w-[1px] bg-accent-foreground opacity-10" />
+          <hr className="size-4 w-[1px] bg-accent-foreground opacity-10" />
 
-          <Link
-            href={"https://twitter.com/abderrahmane_js"}
-            className="transition-colors hover:text-primary"
-            target="_blank"
-          >
-            <TwitterLogoIcon className="size-5" />
-          </Link>
+          <Button variant={"ghost"} size={"icon"} asChild>
+            <Link
+              href={"https://twitter.com/abderrahmane_js"}
+              className="transition-colors hover:text-primary"
+              target="_blank"
+            >
+              <TwitterLogoIcon className="size-4" />
+            </Link>
+          </Button>
         </div>
       </section>
     </footer>
