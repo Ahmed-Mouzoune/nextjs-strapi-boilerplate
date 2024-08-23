@@ -1,1 +1,15 @@
 @import url("@nextjs-strapi-boilerplate/tailwind-config/globals.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-lexend;
+  }
+}
