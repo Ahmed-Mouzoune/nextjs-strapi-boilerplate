@@ -13,8 +13,9 @@ Welcome to the documentation for the Next.js and Strapi boilerplate template! Be
 Explore our tutorials for detailed instructions on specific features:
 
 - 📝 [Adding a Page in Strapi](adding-a-page.md) - Step-by-step guide on creating a new page in Strapi.
+- 🔗🗺️ [Configure Sitemap with Strapi](configure-sitemap.md) - Guide on how to generate sitemap
 
-- 🔜 [More tutorials coming soon!]()
+- 🔜 More tutorials coming soon!
 
 <!-- @todo add api doc -->
 
