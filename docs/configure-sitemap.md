@@ -5,6 +5,15 @@ You can find a tutorial on how to specificaly configure your sitemap here : <htt
 
 ![1724499960238](./assets/configure-sitemap/home.png)
 
+## Table of Contents
+
+- [Configure your sitemap](#configure-your-sitemap)
+  - [Table of Contents](#table-of-contents)
+  - [Sitemap settings](#sitemap-settings)
+  - [Sitemap Generation](#sitemap-generation)
+  - [Test the sitemap](#test-the-sitemap)
+  - [Submit your sitemap to search engines](#submit-your-sitemap-to-search-engines)
+
 ## Sitemap settings
 
 1. Access the plugin settings :
