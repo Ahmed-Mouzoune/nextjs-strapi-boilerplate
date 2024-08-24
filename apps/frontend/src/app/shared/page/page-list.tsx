@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default async function PageList() {
-  const pages = await getPages();
+  const pages = await getPages({
+    sort: "publishedAt:desc",
+  });
 
   return (
     <section className={cn("container mx-auto px-4 py-12 md:px-6")}>

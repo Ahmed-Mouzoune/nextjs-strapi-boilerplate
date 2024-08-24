@@ -7,6 +7,8 @@
   "scripts": {
     "strapi": "strapi",
     "dev": "strapi develop",
+    "sitemap": "strapi-sitemap",
+    "sitemap:generate": "strapi-sitemap generate",
     "start": "strapi start",
     "build": "strapi build",
     "deploy": "strapi deploy",
@@ -28,6 +30,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "strapi-plugin-sitemap": "^3.2.0",
     "styled-components": "5.3.3"
   },
   "author": {

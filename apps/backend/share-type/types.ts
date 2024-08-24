@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
 import type { Attribute, Common, Utils } from "@strapi/strapi";
+import type { Params } from ".";
 
-type IDProperty = { id: number };
+interface IDProperty {
+  id: number;
+}
 
 type InvalidKeys<TSchemaUID extends Common.UID.Schema> = Utils.Object.KeysBy<
   Attribute.GetAll<TSchemaUID>,
@@ -60,14 +64,11 @@ type ComponentValue<TAttribute extends Attribute.Attribute> =
 
 type DynamicZoneValue<TAttribute extends Attribute.Attribute> =
   TAttribute extends Attribute.DynamicZone<infer TComponentUIDs>
-    ? Array<
-        Utils.Array.Values<TComponentUIDs> extends infer TComponentUID
-          ? TComponentUID extends Common.UID.Component
-            ? { __component: TComponentUID } & IDProperty &
-                GetValues<TComponentUID>
-            : never
-          : never
-      >
+    ? Utils.Array.Values<TComponentUIDs> extends infer TComponentUID
+      ? TComponentUID extends Common.UID.Component
+        ? { __component: TComponentUID } & IDProperty & GetValues<TComponentUID>
+        : never
+      : never[]
     : never;
 
 type MediaValue<TAttribute extends Attribute.Attribute> =
@@ -140,3 +141,14 @@ export interface StrapiResponseCollection<
   data: StrapiResponseData<TContentTypeUID>[];
   meta: StrapiResponseCollectionMetadata;
 }
+
+export type StrapiUrlParams<TContentTypeUID extends Common.UID.ContentType> =
+  Params.Pick<
+    TContentTypeUID,
+    | "fields"
+    | "filters"
+    | "sort"
+    | "populate"
+    | "publicationState"
+    | "pagination"
+  >;

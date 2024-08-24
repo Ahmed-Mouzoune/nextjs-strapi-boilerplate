@@ -14,7 +14,7 @@
     "dev:front": "turbo run dev --filter=./apps/frontend",
     "dev:back": "turbo run dev --filter=./apps/backend",
     "build": "turbo run build",
-    "clean": "turbo run clean && git clean -xdf .turbo node_modules",
+    "clean": "turbo run clean",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },

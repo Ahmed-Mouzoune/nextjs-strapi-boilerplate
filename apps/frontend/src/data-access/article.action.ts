@@ -6,10 +6,8 @@ import type { StrapiResponseCollection } from "@nextjs-strapi-boilerplate/backen
 export async function getArticles(): Promise<
   StrapiResponseCollection<"api::article.article">
 > {
-  const params = {
+  return await strapiFetcher("api::article.article", {
     sort: ["publishedAt:desc"],
     populate: "image",
-  };
-
-  return await strapiFetcher("api::article.article", params);
+  });
 }

@@ -1,6 +1,10 @@
 import { APP_CONFIG, FALLBACK_SEO } from "@/app.config";
 import { env } from "@/env.mjs";
-import type { Common, GetValues } from "@nextjs-strapi-boilerplate/backend";
+import type {
+  Common,
+  GetValues,
+  StrapiUrlParams,
+} from "@nextjs-strapi-boilerplate/backend";
 import type { Metadata } from "next";
 import qs from "qs";
 
@@ -109,11 +113,10 @@ function getStrapiApiByUid(uid: ApiContentTypeUid): string {
 }
 
 // Function to call any endpoint of the strapi api
-export async function strapiFetcher(
-  apiUid: ApiContentTypeUid,
-  urlParamsObject = {},
-  options = {},
-) {
+export async function strapiFetcher<
+  TContentTypeUID extends ApiContentTypeUid,
+  TParams extends StrapiUrlParams<TContentTypeUID>,
+>(apiUid: TContentTypeUID, urlParamsObject?: TParams, options = {}) {
   const path = getStrapiApiByUid(apiUid);
 
   try {
