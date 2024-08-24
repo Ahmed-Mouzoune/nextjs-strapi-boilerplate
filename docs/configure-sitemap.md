@@ -8,30 +8,32 @@ You can find a tutorial on how to specificaly configure your sitemap here : <htt
 ## Sitemap settings
 
 1. Access the plugin settings :
-   * Open your Strapi admin panel (usually accessible at **<http://localhost:1337/admin>**).
-   * Navigate to the **Settings** section.
+   - Open your Strapi admin panel (usually accessible at **<http://localhost:1337/admin>**).
+   - Navigate to the **Settings** section.
 2. Configure the sitemap plugin :
-   * In the Settings menu, you'll find the Sitemap plugin under the Plugins section.
-   * Here, you can configure various options such as **which content types** should be included in the sitemap, custom URLs, and more. (I already setup for **Pages**)
+
+   - In the Settings menu, you'll find the Sitemap plugin under the Plugins section.
+   - Here, you can configure various options such as **which content types** should be included in the sitemap, custom URLs, and more. (I already setup for **Pages**)
 
    Some of the configurations you might see include:
-     * Include/Exclude Content Types: Choose which content types should be included in the sitemap.
-     * Custom URLs: Add any custom URLs that should be included in the sitemap.
-     * Frequency & Priority: Set the changefreq and priority attributes for each content type.
+
+   - Include/Exclude Content Types: Choose which content types should be included in the sitemap.
+   - Custom URLs: Add any custom URLs that should be included in the sitemap.
+   - Frequency & Priority: Set the changefreq and priority attributes for each content type.
 
 3. Save your settings :
-   * Once you've configured the plugin, save your settings.
+   - Once you've configured the plugin, save your settings.
 
 ## Sitemap Generation
 
 You can generate your sitemap in 2 ways :
 
 1. CLI
-To generate the sitemap with CLI you can just run `yarn sitemap:generate`
+   To generate the sitemap with CLI you can just run `yarn sitemap:generate`
 
 2. Via Web Interface
-With the "Generate sitemap" button : <http://localhost:1337/admin/settings/sitemap>
-![Generate Sitemap](./assets/configure-sitemap//generate-sitemap.png)
+   With the "Generate sitemap" button : <http://localhost:1337/admin/settings/sitemap>
+   ![Generate Sitemap](./assets/configure-sitemap//generate-sitemap.png)
 
 ## Test the sitemap
 
@@ -46,13 +48,13 @@ All those settings is to be discover by search engines. That's why you would wan
 For Google :
 
 1. Google Search Console <[search.google.com/search-console](https://search.google.com/search-console/welcome)>:
-   * Go to Google Search Console.
-   * Select your property and navigate to the Sitemaps section.
-   * Enter the URL of your sitemap and submit it.
+   - Go to Google Search Console.
+   - Select your property and navigate to the Sitemaps section.
+   - Enter the URL of your sitemap and submit it.
 
 For Bing :
 
 1. Bing Webmaster Tools <[bing.com/webmasters/about](https://www.bing.com/webmasters/about)>:
-   * Log in to Bing Webmaster Tools.
-   * Go to your site's dashboard and find the Sitemaps section.
-   * Submit the URL of your sitemap.
+   - Log in to Bing Webmaster Tools.
+   - Go to your site's dashboard and find the Sitemaps section.
+   - Submit the URL of your sitemap.
