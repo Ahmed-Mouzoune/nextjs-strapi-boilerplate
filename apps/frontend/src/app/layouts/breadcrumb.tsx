@@ -30,7 +30,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import { useMediaQuery } from "@hooks/use-media-query";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { useCallback } from "react";
 import type {

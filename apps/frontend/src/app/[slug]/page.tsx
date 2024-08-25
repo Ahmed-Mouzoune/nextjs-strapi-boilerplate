@@ -1,7 +1,6 @@
 import BlockManager from "@/components/strapi/BlockManager";
-import { getPageBySlug } from "@/data-access/page.action";
+import { getPageBySlugUseCase } from "@/use-cases/page";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { strapiGetMetaData, strapiGetUrlFromSlug } from "../../lib/api/strapi";
 
 interface PageRootProps {
@@ -13,28 +12,20 @@ interface PageRootProps {
 export async function generateMetadata({
   params,
 }: PageRootProps): Promise<Metadata> {
-  const page = await getPageBySlug(params.slug);
+  const page = await getPageBySlugUseCase(params.slug);
 
-  return strapiGetMetaData(
-    page?.attributes.seo ?? null,
-    strapiGetUrlFromSlug(params.slug),
-  );
+  return strapiGetMetaData(page.seo, strapiGetUrlFromSlug(page.slug));
 }
 
 export default async function PageRoot({ params }: PageRootProps) {
-  const page = await getPageBySlug(params.slug);
-
-  if (!page) {
-    return notFound();
-  }
-
-  const { dynamicContent } = page.attributes;
+  const page = await getPageBySlugUseCase(params.slug);
 
   return (
     <section className="text-center">
-      <h1>{page.attributes.title}</h1>
+      <h1>{page.title}</h1>
 
-      {dynamicContent && <BlockManager blocks={dynamicContent} />}
+      {/* @ts-expect-error */}
+      {page.dynamicContent && <BlockManager blocks={page.dynamicContent} />}
     </section>
   );
 }
