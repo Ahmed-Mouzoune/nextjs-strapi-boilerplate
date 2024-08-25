@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
+import { useIsomorphicLayoutEffect } from "@hooks/use-isomorphic-layout-effect";
 import { useState } from "react";
 
 interface UseMediaQueryOptions {

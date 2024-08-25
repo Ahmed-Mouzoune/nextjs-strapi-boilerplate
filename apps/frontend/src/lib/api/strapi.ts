@@ -1,5 +1,6 @@
 import { APP_CONFIG, FALLBACK_SEO } from "@/app.config";
 import { env } from "@/env.mjs";
+import { StrapiError } from "@/use-cases/error";
 import type {
   Common,
   GetValues,
@@ -107,7 +108,7 @@ function getStrapiApiByUid(uid: ApiContentTypeUid): string {
     return path;
   }
 
-  throw new Error(
+  throw new StrapiError(
     `Endpoint for UID "${uid}" not found. Extend API_ENDPOINTS in src/utils/strapi-fetcher`,
   );
 }
@@ -122,7 +123,6 @@ export async function strapiFetcher<
   try {
     const cacheDuration: number = env.NODE_ENV === "development" ? 0 : 60;
 
-    // Merge default and user options
     const mergedOptions = {
       next: { revalidate: cacheDuration },
       headers: {
@@ -132,7 +132,6 @@ export async function strapiFetcher<
       ...options,
     };
 
-    // Build request URL
     const queryString = qs.stringify(urlParamsObject);
     const requestUrl = `${strapiGetUrl(
       `/api${path}${queryString ? `?${queryString}` : ""}`,
@@ -142,14 +141,12 @@ export async function strapiFetcher<
       await delay(1000);
     }
 
-    // Trigger API call
     const response = await fetch(requestUrl, mergedOptions);
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error);
-    throw new Error(
-      `Please check if your strapi server is running and you set all the required tokens.`,
+    throw new StrapiError(
+      "Please check if your strapi server is running and you set all the required tokens.",
     );
   }
 }

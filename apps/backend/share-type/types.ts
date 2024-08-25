@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import type { Attribute, Common, Utils } from "@strapi/strapi";
-import type { Params } from ".";
+import type { Attribute, Common, Utils } from '@strapi/strapi'
+import type { Params } from '.'
 
 interface IDProperty {
-  id: number;
+  id: number
 }
 
 type InvalidKeys<TSchemaUID extends Common.UID.Schema> = Utils.Object.KeysBy<
   Attribute.GetAll<TSchemaUID>,
   Attribute.Private | Attribute.Password
->;
+>
 
 export type GetValues<TSchemaUID extends Common.UID.Schema> = {
   [TKey in Attribute.GetOptionalKeys<TSchemaUID>]?: Attribute.Get<
@@ -17,18 +17,18 @@ export type GetValues<TSchemaUID extends Common.UID.Schema> = {
     TKey
   > extends infer TAttribute extends Attribute.Attribute
     ? GetValue<TAttribute>
-    : never;
+    : never
 } & {
   [TKey in Attribute.GetRequiredKeys<TSchemaUID>]-?: Attribute.Get<
     TSchemaUID,
     TKey
   > extends infer TAttribute extends Attribute.Attribute
     ? GetValue<TAttribute>
-    : never;
+    : never
 } extends infer TValues
   ? // Remove invalid keys (private, password)
     Omit<TValues, InvalidKeys<TSchemaUID>>
-  : never;
+  : never
 
 type RelationValue<TAttribute extends Attribute.Attribute> =
   TAttribute extends Attribute.Relation<
@@ -44,13 +44,13 @@ type RelationValue<TAttribute extends Attribute.Attribute> =
               Attribute.RelationKind.WithTarget
             >,
             TRelationKind extends `${string}ToMany`
-              ? Omit<StrapiResponseCollection<TTarget>, "meta">
+              ? Omit<StrapiResponseCollection<TTarget>, 'meta'>
               : StrapiResponse<TTarget> | null,
           ],
         ],
         `TODO: handle other relation kind (${TRelationKind})`
       >
-    : never;
+    : never
 
 type ComponentValue<TAttribute extends Attribute.Attribute> =
   TAttribute extends Attribute.Component<infer TComponentUID, infer TRepeatable>
@@ -60,7 +60,7 @@ type ComponentValue<TAttribute extends Attribute.Attribute> =
           GetValues<TComponentUID>[],
           GetValues<TComponentUID> | null
         >
-    : never;
+    : never
 
 type DynamicZoneValue<TAttribute extends Attribute.Attribute> =
   TAttribute extends Attribute.DynamicZone<infer TComponentUIDs>
@@ -69,16 +69,16 @@ type DynamicZoneValue<TAttribute extends Attribute.Attribute> =
         ? { __component: TComponentUID } & IDProperty & GetValues<TComponentUID>
         : never
       : never[]
-    : never;
+    : never
 
 type MediaValue<TAttribute extends Attribute.Attribute> =
   TAttribute extends Attribute.Media<infer _TKind, infer TMultiple>
     ? Utils.Expression.If<
         TMultiple,
-        StrapiResponseCollection<"plugin::upload.file">,
-        StrapiResponse<"plugin::upload.file"> | null
+        StrapiResponseCollection<'plugin::upload.file'>,
+        StrapiResponse<'plugin::upload.file'> | null
       >
-    : never;
+    : never
 
 export type GetValue<TAttribute extends Attribute.Attribute> =
   Utils.Expression.If<
@@ -87,22 +87,22 @@ export type GetValue<TAttribute extends Attribute.Attribute> =
       [
         // Relation
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"relation">>,
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'relation'>>,
           RelationValue<TAttribute>,
         ],
         // DynamicZone
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"dynamiczone">>,
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'dynamiczone'>>,
           DynamicZoneValue<TAttribute>,
         ],
         // Component
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"component">>,
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'component'>>,
           ComponentValue<TAttribute>,
         ],
         // Media
         [
-          Utils.Expression.Extends<TAttribute, Attribute.OfType<"media">>,
+          Utils.Expression.Extends<TAttribute, Attribute.OfType<'media'>>,
           MediaValue<TAttribute>,
         ],
         // Fallback
@@ -112,43 +112,43 @@ export type GetValue<TAttribute extends Attribute.Attribute> =
       unknown
     >,
     unknown
-  >;
+  >
 
 export interface StrapiResponseData<
   TContentTypeUID extends Common.UID.ContentType,
 > extends IDProperty {
-  attributes: GetValues<TContentTypeUID>;
+  attributes: GetValues<TContentTypeUID>
 }
 
 export interface StrapiResponseCollectionMetadata {
   pagination: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number;
-  };
+    page: number
+    pageSize: number
+    pageCount: number
+    total: number
+  }
 }
 
 export interface StrapiResponse<
   TContentTypeUID extends Common.UID.ContentType,
 > {
-  data: StrapiResponseData<TContentTypeUID>;
+  data: StrapiResponseData<TContentTypeUID>
 }
 
 export interface StrapiResponseCollection<
   TContentTypeUID extends Common.UID.ContentType,
 > {
-  data: StrapiResponseData<TContentTypeUID>[];
-  meta: StrapiResponseCollectionMetadata;
+  data: StrapiResponseData<TContentTypeUID>[]
+  meta: StrapiResponseCollectionMetadata
 }
 
 export type StrapiUrlParams<TContentTypeUID extends Common.UID.ContentType> =
   Params.Pick<
     TContentTypeUID,
-    | "fields"
-    | "filters"
-    | "sort"
-    | "populate"
-    | "publicationState"
-    | "pagination"
-  >;
+    | 'fields'
+    | 'filters'
+    | 'sort'
+    | 'populate'
+    | 'publicationState'
+    | 'pagination'
+  >
