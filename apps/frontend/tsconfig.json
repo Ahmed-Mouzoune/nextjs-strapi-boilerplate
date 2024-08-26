@@ -6,7 +6,8 @@
       "@/*": ["src/*"],
       "@public/*": ["public/*"],
       "@utils/*": ["src/utils/*"],
-      "@hooks/*": ["src/lib/hooks/*"]
+      "@hooks/*": ["src/lib/hooks/*"],
+      "@components/*": ["src/components/*"]
     },
     "plugins": [{ "name": "next" }]
   },

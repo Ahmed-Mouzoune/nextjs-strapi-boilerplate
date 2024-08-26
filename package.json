@@ -15,6 +15,7 @@
     "dev:back": "turbo run dev --filter=./apps/backend",
     "build": "turbo run build",
     "clean": "turbo run clean",
+    "clean:turbo": "git clean -xdf .turbo node_modules",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
@@ -25,7 +26,7 @@
     "turbo": "^2.0.14"
   },
   "engines": {
-    "node": ">=18.17.0 <=20.x.x",
+    "node": ">=18.18.0 <=20.x.x",
     "npm": ">=9.0.0",
     "yarn": ">=1.22.0"
   }

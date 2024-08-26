@@ -2,21 +2,13 @@ import { APP_CONFIG, FALLBACK_SEO } from "@/app.config";
 import { env } from "@/env.mjs";
 import { StrapiError } from "@/use-cases/error";
 import type {
-  Common,
   GetValues,
   StrapiUrlParams,
 } from "@nextjs-strapi-boilerplate/backend";
 import type { Metadata } from "next";
 import qs from "qs";
-
-type ApiContentTypeUid = Extract<Common.UID.ContentType, `api::${string}`>;
-
-const API_ENDPOINTS: {
-  [K in ApiContentTypeUid]: string;
-} = {
-  "api::article.article": "/articles",
-  "api::page.page": "/pages",
-};
+import type { ApiContentTypeUid } from "./type";
+import { API_ENDPOINTS } from "./type";
 
 // Get base url of strapi API
 export function strapiGetUrl(path = ""): string {
@@ -142,11 +134,21 @@ export async function strapiFetcher<
     }
 
     const response = await fetch(requestUrl, mergedOptions);
+
+    if (response.status === 401) {
+      throw new StrapiError("UnauthorizedError");
+    }
+
+    if (response.status === 403) {
+      throw new StrapiError("Bad Credentials");
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error("error from fetch :", error);
     throw new StrapiError(
-      "Please check if your strapi server is running and you set all the required tokens.",
+      `Please check if your strapi server is running and you set all the required tokens. ${error}`,
     );
   }
 }

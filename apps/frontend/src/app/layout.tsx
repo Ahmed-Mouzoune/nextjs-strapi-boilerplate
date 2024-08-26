@@ -8,7 +8,7 @@ import { FALLBACK_SEO } from "@/app.config";
 import { inter } from "@/app/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { BreadcrumbResponsive } from "./layouts/breadcrumb";
+import { BreadcrumbResponsive } from "./_layouts/breadcrumb";
 
 export const metadata: Metadata = {
   ...FALLBACK_SEO,
