@@ -8,7 +8,7 @@ import { FALLBACK_SEO } from "@/app.config";
 import { inter } from "@/app/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { BreadcrumbResponsive } from "./layouts/breadcrumb";
+import { BreadcrumbResponsive } from "./_layouts/breadcrumb";
 
 export const metadata: Metadata = {
   ...FALLBACK_SEO,
@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "flex min-h-screen flex-col justify-between bg-background text-foreground",
+          "flex min-h-screen flex-col bg-background text-foreground",
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

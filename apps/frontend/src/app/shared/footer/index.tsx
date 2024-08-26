@@ -13,13 +13,15 @@ export default function Footer() {
         <div>
           <span>© {new Date().getFullYear()} Built by </span>
           <Button variant={"link"} className="px-0" asChild>
-            <Link href={"https://abderrahmanemouzoune.com"}>
+            <Link href={"https://abderrahmanemouzoune.com"} target="_blank">
               Abderrahmane Mouzoune.
             </Link>
           </Button>
           <span className="ml-1">Powered by </span>
           <Button variant={"link"} className="px-0" asChild>
-            <Link href={"https://www.youzoune.com"}>youzoune.com</Link>
+            <Link href={"https://www.youzoune.com"} target="_blank">
+              youzoune.com
+            </Link>
           </Button>
         </div>
 

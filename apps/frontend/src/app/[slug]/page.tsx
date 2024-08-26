@@ -1,5 +1,6 @@
-import BlockManager from "@/components/strapi/BlockManager";
 import { getPageBySlugUseCase } from "@/use-cases/page";
+import BlockManager from "@components/strapi/BlockManager";
+import { Headline } from "@components/ui/headline";
 import type { Metadata } from "next";
 import { strapiGetMetaData, strapiGetUrlFromSlug } from "../../lib/api/strapi";
 
@@ -22,7 +23,9 @@ export default async function PageRoot({ params }: PageRootProps) {
 
   return (
     <section className="text-center">
-      <h1>{page.title}</h1>
+      <Headline>{page.title}</Headline>
+
+      <p>{page.seo.metaDescription}</p>
 
       {/* @ts-expect-error */}
       {page.dynamicContent && <BlockManager blocks={page.dynamicContent} />}

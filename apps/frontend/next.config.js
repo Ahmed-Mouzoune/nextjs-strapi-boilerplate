@@ -2,7 +2,7 @@
 const nextConfig = {
   // https://nextjs.org/docs/messages/next-image-unconfigured-host
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "avatars.githubusercontent.com"],
     remotePatterns: [
       {
         protocol: "http",

@@ -23,6 +23,7 @@ export async function getPages(): Promise<Page[]> {
   const response: StrapiResponseCollection<"api::page.page"> =
     await strapiFetcher("api::page.page", {
       sort: "publishedAt:desc",
+      populate: ["seo", "dynamicContent"],
     });
 
   return response.data?.map(pageAdapter) || [];
