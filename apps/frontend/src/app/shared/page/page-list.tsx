@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Headline } from "@/components/ui/headline";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { getPagesUseCase } from "@/use-cases/page";
 
 export default async function PageList() {
@@ -18,32 +18,29 @@ export default async function PageList() {
     <section className={cn("container mx-auto space-y-3 px-4 py-12 md:px-6")}>
       <Headline variant={"h2"}>List of all pages created with strapi</Headline>
 
-      <ol className="grid grid-cols-2 md:grid-cols-4">
-        {pages && (
-          <HoverEffect
-            items={pages.map((page) => ({
-              link: page.slug,
-              Element: () => {
-                return (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>{page.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription>
-                        {page.seo.metaDescription}
-                      </CardDescription>
-                    </CardContent>
-                    <CardFooter>
-                      Created at {page.createdAt?.toLocaleString()}
-                    </CardFooter>
-                  </Card>
-                );
-              },
-            }))}
-          />
-        )}
-      </ol>
+      {pages && (
+        <HoverEffect
+          items={pages.map((page) => ({
+            link: page.slug,
+            children: (
+              <Card className="h-full w-full">
+                <CardHeader>
+                  <CardTitle>{page.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{page.seo.metaDescription}</CardDescription>
+                </CardContent>
+                {page.createdAt && (
+                  <CardFooter className="self-end">
+                    Created @
+                    {formatDate(new Date(page.createdAt), "dd/MM HH:mm")}
+                  </CardFooter>
+                )}
+              </Card>
+            ),
+          }))}
+        />
+      )}
     </section>
   );
 }

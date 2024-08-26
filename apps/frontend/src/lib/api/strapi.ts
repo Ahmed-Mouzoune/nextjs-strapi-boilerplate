@@ -146,7 +146,6 @@ export async function strapiFetcher<
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("error from fetch :", error);
     throw new StrapiError(
       `Please check if your strapi server is running and you set all the required tokens. ${error}`,
     );

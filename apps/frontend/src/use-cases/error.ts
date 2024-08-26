@@ -19,3 +19,10 @@ export class StrapiError extends PublicError {
     this.name = "StrapiError";
   }
 }
+
+export class DateError extends PublicError {
+  constructor() {
+    super("Date error");
+    this.name = "DateError";
+  }
+}

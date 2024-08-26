@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "flex min-h-screen flex-col justify-between bg-background text-foreground",
+          "flex min-h-screen flex-col bg-background text-foreground",
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

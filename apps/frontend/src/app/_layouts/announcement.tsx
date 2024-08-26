@@ -2,21 +2,21 @@
 
 import { cn } from "@/lib/utils";
 import AnimatedGradientText from "@components/magicui/animated-gradient-text";
-import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 export function Announcement() {
   return (
-    <div className="z-10 flex min-h-[4rem] items-center justify-center">
+    <div className="z-10 flex items-center justify-center">
       <AnimatedGradientText>
-        🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
+        <Image src={"/favicon.ico"} alt={"Logo"} width={20} height={20} />{" "}
+        <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
         <span
           className={cn(
-            `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+            `via-neutral inline animate-gradient bg-gradient-to-r from-primary to-primary bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
           )}
         >
-          Introducing Easy-UI
+          Introducing Nextrapi
         </span>
-        <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
       </AnimatedGradientText>
     </div>
   );

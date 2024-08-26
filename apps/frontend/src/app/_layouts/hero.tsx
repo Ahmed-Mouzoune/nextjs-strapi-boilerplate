@@ -11,11 +11,23 @@ import Link from "next/link";
 import { Announcement } from "./announcement";
 
 export default function Hero() {
-  const avatarUrls = [
-    "https://avatars.githubusercontent.com/u/45047261",
-    "https://avatars.githubusercontent.com/u/83463423",
-    "https://avatars.githubusercontent.com/u/83534308",
-    "https://avatars.githubusercontent.com/u/102341310",
+  const avatars = [
+    {
+      url: "https://avatars.githubusercontent.com/u/45047261",
+      name: "AbderrahmaneMouzoune",
+    },
+    {
+      url: "https://avatars.githubusercontent.com/u/83463423",
+      name: "Ahmed-Mouzoune",
+    },
+    {
+      url: "https://avatars.githubusercontent.com/u/83534308",
+      name: "Zouiqad",
+    },
+    {
+      url: "https://avatars.githubusercontent.com/u/102341310",
+      name: "Teczer",
+    },
   ];
   return (
     <section className="container flex flex-col items-start gap-5 text-center md:items-center">
@@ -27,26 +39,14 @@ export default function Hero() {
         >
           Nextjs & Strapi boilerplate
         </Headline>
-        <Badge className="absolute -top-3.5 right-0 z-10 rotate-3 md:top-12 md:-rotate-12">
+        <Badge className="absolute right-0 top-2.5 z-10 rotate-3 md:top-12 md:-rotate-12">
           fast implementation
         </Badge>
       </div>
       <p className="max-w-xl text-balance text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg">
-        3+ free and animated templates built with{" "}
-        <span className="font-bold text-black dark:text-white">React</span>,{" "}
-        <span className="font-bold text-black dark:text-white">Typescript</span>
-        ,{" "}
-        <span className="font-bold text-black dark:text-white">
-          Tailwind CSS
-        </span>
-        , <span className="font-bold text-black dark:text-white">Magic-UI</span>
-        , and{" "}
-        <span className="font-bold text-black dark:text-white">
-          Framer Motion
-        </span>
-        .
-        <br />
+        Build a fast app with this <b>Nextjs</b>, <b>Strapi</b> boilerplate
       </p>
+
       <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4">
           <Link
@@ -79,27 +79,27 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="flex max-w-xl flex-row items-center justify-between text-balance p-5 text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-base">
-        <span className="font-300 text-md mr-2 text-gray-600 dark:text-gray-400">
+      <div className="flex max-w-xl flex-row items-center justify-between text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-base">
+        <Headline variant={"h3"} className="text-md mr-2">
           Trusted by
-        </span>
-        <AvatarCircles numPeople={99} avatarUrls={avatarUrls} />
+        </Headline>
+        <AvatarCircles numPeople={99} avatars={avatars} />
       </div>
 
-      <div className="relative hidden rounded-xl lg:block">
+      <div className="relative rounded-xl lg:block">
         <Image
           src="/dashboard-dark.png"
           alt="Hero section desktop"
           width={1200}
           height={350}
-          className="hidden max-w-[1200px] rounded-[inherit] border object-contain shadow-lg dark:block"
+          className="hidden max-w-[350px] rounded-[inherit] object-contain shadow-lg dark:block lg:max-w-[1200px]"
         />
         <Image
           src="/dashboard-light.png"
           alt="Hero section mobile"
           width={1200}
           height={350}
-          className="block max-w-[1200px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
+          className="block max-w-[350px] rounded-[inherit] object-contain shadow-lg dark:hidden lg:max-w-[1200px]"
         />
 
         <BorderBeamm size={250} duration={12} delay={9} />
