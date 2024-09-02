@@ -41,7 +41,7 @@
     "@nextjs-strapi-boilerplate/eslint-config": "*",
     "@nextjs-strapi-boilerplate/prettier-config": "*",
     "@nextjs-strapi-boilerplate/tailwind-config": "*",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/qs": "^6.9.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
