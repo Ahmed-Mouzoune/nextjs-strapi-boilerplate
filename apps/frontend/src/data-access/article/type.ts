@@ -16,6 +16,8 @@ export function articleAdapter(
     title: article.attributes.title,
     description: article.attributes.description,
     image: article.attributes.image,
+    seo: article.attributes.seo,
+    author: article.attributes.author,
     createdAt: article.attributes.createdAt,
     publishedAt: article.attributes.publishedAt,
     updatedAt: article.attributes.updatedAt,

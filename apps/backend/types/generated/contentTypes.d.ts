@@ -924,6 +924,20 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: true
         }
       }>
+    author: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime

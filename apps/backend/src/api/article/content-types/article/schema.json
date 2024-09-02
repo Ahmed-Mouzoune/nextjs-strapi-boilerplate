@@ -49,12 +49,35 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images", "videos"],
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
+    },
+    "author": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "required": true
     }
   }
 }

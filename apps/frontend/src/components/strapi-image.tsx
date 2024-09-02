@@ -1,7 +1,10 @@
+"use client";
+
 import { strapiGetMedia } from "@/lib/api/strapi";
 import { cn } from "@/lib/utils";
 import type { ImageProps } from "next/image";
 import Image from "next/image";
+import { useState } from "react";
 
 interface StrapiImageProps {
   src: string;
@@ -21,18 +24,21 @@ function StrapiImage({
   priority = false,
   ...props
 }: StrapiImageProps & ImageProps) {
-  if (!src) return null;
   const imageUrl = strapiGetMedia(src);
-  const imageFallback = `https://placehold.co/${width}x${height}`;
+  const imageFallback = `https://placehold.co/${width}x${height}.png`;
+  const [image, setImage] = useState(imageUrl);
 
   return (
     <Image
-      src={imageUrl ?? imageFallback}
+      src={image ?? imageFallback}
       alt={alt}
       height={height}
       width={width}
       priority={priority}
       className={cn(className)}
+      onError={() => {
+        setImage(imageFallback);
+      }}
       {...props}
     />
   );

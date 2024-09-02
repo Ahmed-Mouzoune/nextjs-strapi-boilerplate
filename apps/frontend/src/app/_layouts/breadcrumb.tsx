@@ -62,7 +62,7 @@ export function BreadcrumbResponsive() {
       href:
         i === segments.length - 1
           ? undefined
-          : `${segments.slice(0, i + 1).join("/")}`,
+          : `/${segments.slice(0, i + 1).join("/")}`,
       label: formatPath(segment),
     };
   });

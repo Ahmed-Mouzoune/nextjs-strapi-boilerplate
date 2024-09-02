@@ -4,6 +4,7 @@ import { StrapiError } from "@/use-cases/error";
 import type {
   GetValues,
   StrapiUrlParams,
+  StrapiUrlPostParams,
 } from "@nextjs-strapi-boilerplate/backend";
 import type { Metadata } from "next";
 import qs from "qs";
@@ -27,7 +28,7 @@ export function strapiGetMedia(url: string | null | undefined): string | null {
   }
 
   // Otherwise prepend the URL path with the Strapi URL
-  return `${strapiGetUrl()}${url}`;
+  return `${env.NEXT_PUBLIC_STRAPI_MEDIA_URL ?? "http://localhost:1337"}${url}`;
 }
 
 export function strapiGetMetaData(
@@ -105,49 +106,86 @@ function getStrapiApiByUid(uid: ApiContentTypeUid): string {
   );
 }
 
-// Function to call any endpoint of the strapi api
+type HttpMethod = "GET" | "POST";
+
+async function strapiRequest<
+  TContentTypeUID extends ApiContentTypeUid,
+  TParams extends
+    | StrapiUrlParams<TContentTypeUID>
+    | StrapiUrlPostParams<TContentTypeUID>,
+>(
+  apiUid: TContentTypeUID,
+  urlParamsObject?: TParams,
+  options: RequestInit = {},
+  method: HttpMethod = "GET",
+) {
+  const path = getStrapiApiByUid(apiUid);
+  const cacheDuration: number = env.NODE_ENV === "development" ? 0 : 60;
+
+  const mergedOptions: RequestInit = {
+    next: { revalidate: cacheDuration },
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${env.STRAPI_API_PUBLIC_TOKEN}`,
+    },
+    ...options,
+  };
+
+  let requestUrl = `${strapiGetUrl(`/api${path}`)}`;
+
+  if (method === "GET" && urlParamsObject) {
+    const queryString = qs.stringify(urlParamsObject);
+    requestUrl += queryString ? `?${queryString}` : "";
+  } else if (method === "POST" && urlParamsObject) {
+    mergedOptions.body = JSON.stringify(urlParamsObject);
+  }
+
+  if (env.NODE_ENV === "development") {
+    await delay(1000);
+  }
+
+  try {
+    const response = await fetch(requestUrl, mergedOptions);
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        throw new StrapiError("UnauthorizedError");
+      }
+      if (response.status === 403) {
+        throw new StrapiError("Bad Credentials");
+      }
+      throw new StrapiError(
+        "An error occurred while fetching data from Strapi",
+      );
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new StrapiError(
+      `Please check if your Strapi server is running and you set all the required tokens. ${error}`,
+    );
+  }
+}
+
 export async function strapiFetcher<
   TContentTypeUID extends ApiContentTypeUid,
   TParams extends StrapiUrlParams<TContentTypeUID>,
->(apiUid: TContentTypeUID, urlParamsObject?: TParams, options = {}) {
-  const path = getStrapiApiByUid(apiUid);
+>(
+  apiUid: TContentTypeUID,
+  urlParamsObject?: TParams,
+  options: RequestInit = {},
+) {
+  return strapiRequest(apiUid, urlParamsObject, options, "GET");
+}
 
-  try {
-    const cacheDuration: number = env.NODE_ENV === "development" ? 0 : 60;
-
-    const mergedOptions = {
-      next: { revalidate: cacheDuration },
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${env.STRAPI_API_PUBLIC_TOKEN}`,
-      },
-      ...options,
-    };
-
-    const queryString = qs.stringify(urlParamsObject);
-    const requestUrl = `${strapiGetUrl(
-      `/api${path}${queryString ? `?${queryString}` : ""}`,
-    )}`;
-
-    if (env.NODE_ENV === "development") {
-      await delay(1000);
-    }
-
-    const response = await fetch(requestUrl, mergedOptions);
-
-    if (response.status === 401) {
-      throw new StrapiError("UnauthorizedError");
-    }
-
-    if (response.status === 403) {
-      throw new StrapiError("Bad Credentials");
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw new StrapiError(
-      `Please check if your strapi server is running and you set all the required tokens. ${error}`,
-    );
-  }
+export async function strapiPost<
+  TContentTypeUID extends ApiContentTypeUid,
+  TParams extends StrapiUrlPostParams<TContentTypeUID>,
+>(
+  apiUid: TContentTypeUID,
+  urlParamsObject?: TParams,
+  options: RequestInit = {},
+) {
+  return strapiRequest(apiUid, urlParamsObject, options, "POST");
 }

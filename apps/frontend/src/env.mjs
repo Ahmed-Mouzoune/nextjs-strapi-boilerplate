@@ -15,6 +15,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_SITE_URL: z.string().optional(),
+    NEXT_PUBLIC_STRAPI_MEDIA_URL: z.string().optional(),
   },
   runtimeEnv: process.env,
 });

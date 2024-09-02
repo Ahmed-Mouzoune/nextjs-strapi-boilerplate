@@ -26,3 +26,10 @@ export class DateError extends PublicError {
     this.name = "DateError";
   }
 }
+
+export class NotCreatedError extends PublicError {
+  constructor() {
+    super("Resource not created");
+    this.name = "NotCreatedError";
+  }
+}
