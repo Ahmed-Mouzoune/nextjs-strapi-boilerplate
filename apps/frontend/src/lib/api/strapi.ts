@@ -155,6 +155,7 @@ async function strapiRequest<
       if (response.status === 403) {
         throw new StrapiError("Bad Credentials");
       }
+
       throw new StrapiError(
         "An error occurred while fetching data from Strapi",
       );

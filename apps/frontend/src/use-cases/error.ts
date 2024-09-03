@@ -33,3 +33,10 @@ export class NotCreatedError extends PublicError {
     this.name = "NotCreatedError";
   }
 }
+
+export class RateLimitError extends Error {
+  constructor() {
+    super("Rate limit exceeded");
+    this.name = "RateLimitError";
+  }
+}

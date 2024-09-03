@@ -1,7 +1,7 @@
-import { StrapiImage } from "@/components/strapi-image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Headline } from "@/components/ui/headline";
-import { Skeleton } from "@/components/ui/skeleton";
+import { StrapiImage } from "@components/strapi-image";
+import { Card, CardContent, CardHeader } from "@components/ui/card";
+import { Headline } from "@components/ui/headline";
+import { Skeleton } from "@components/ui/skeleton";
 import Link from "next/link";
 
 interface ArticleCardProps {
@@ -43,7 +43,7 @@ export default function ArticleCard({
               By {author}
             </Headline>
             {publishedAt && (
-              <Headline variant={"h6"} className="text-primary-600 text-sm">
+              <Headline variant={"h6"} className="text-sm text-primary-600">
                 @{publishedAt}
               </Headline>
             )}
@@ -56,21 +56,15 @@ export default function ArticleCard({
 
 export function ArticleCardLoading() {
   return (
-    <Card className="hover:border-primary-600 group w-full cursor-pointer rounded-2xl border border-gray-300 p-5 transition-all duration-300 max-lg:max-w-xl lg:w-1/3">
-      <CardHeader className="mb-6 flex items-center">
-        <Skeleton className="h-full w-full" />
+    <Card className="group w-full cursor-pointer rounded-2xl border border-gray-300 transition-all duration-300 hover:border-primary">
+      <CardHeader className="h-[200px]">
+        <Skeleton className="h-full w-full rounded-lg object-cover object-center" />
       </CardHeader>
-      <CardContent className="block">
-        <Headline variant={"h4"}>
-          <Skeleton className="h-6 w-full" />
-        </Headline>
+      <CardContent>
+        <Skeleton className="h-4 w-24" />
         <div className="flex items-center justify-between font-medium">
-          <Headline variant={"h6"}>
-            <Skeleton className="h-6 w-full" />
-          </Headline>
-          <Headline variant={"h6"}>
-            <Skeleton className="h-6 w-full" />
-          </Headline>
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-4 w-24" />
         </div>
       </CardContent>
     </Card>

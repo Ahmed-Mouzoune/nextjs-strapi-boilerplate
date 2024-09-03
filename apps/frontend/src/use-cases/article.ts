@@ -3,7 +3,7 @@ import {
   getArticleBySlug,
   getArticles,
 } from "@/data-access/article";
-import type { Article } from "@/data-access/article/type";
+import type { Article, ArticleCreate } from "@/data-access/article/type";
 import { NotCreatedError, NotFoundError } from "./error";
 
 export async function getArticlesUseCase(): Promise<Article[]> {
@@ -26,7 +26,7 @@ export async function getArticleBySlugUseCase(slug: string): Promise<Article> {
   return article;
 }
 
-export async function createArticleUseCase(article: Article) {
+export async function createArticleUseCase(article: ArticleCreate) {
   const createdArticle = await createArticle(article);
 
   if (!createdArticle) {

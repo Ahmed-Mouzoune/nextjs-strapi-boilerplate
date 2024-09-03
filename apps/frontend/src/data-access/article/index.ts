@@ -1,7 +1,8 @@
 "use server";
 import { strapiFetcher, strapiPost } from "@/lib/api/strapi";
 import type { StrapiResponseCollection } from "@nextjs-strapi-boilerplate/backend";
-import type { Article } from "./type";
+import slugify from "slugify";
+import type { Article, ArticleCreate } from "./type";
 import { articleAdapter } from "./type";
 
 export async function getArticles(): Promise<Article[]> {
@@ -27,14 +28,17 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
   return articleAdapter(response?.data?.[0]);
 }
 
-export async function createArticle(article: Article): Promise<boolean> {
+export async function createArticle(article: ArticleCreate): Promise<boolean> {
   const response = await strapiPost("api::article.article", {
     data: {
-      slug: article.slug,
+      slug: article.slug ?? slugify(article.title),
       title: article.title,
       description: article.description,
-      image: article.image,
-      seo: article.seo,
+      image: 1,
+      seo: {
+        metaTitle: article.title,
+        metaDescription: article.description,
+      },
       author: article.author,
     },
   });
