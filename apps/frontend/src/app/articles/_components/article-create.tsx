@@ -18,7 +18,6 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 import { useServerAction } from "zsa-react";
 import { createArticleAction } from "../actions";
-
 export default function ArticleCreate() {
   const form = useForm<z.infer<typeof articleCreateSchema>>({
     resolver: zodResolver(articleCreateSchema),

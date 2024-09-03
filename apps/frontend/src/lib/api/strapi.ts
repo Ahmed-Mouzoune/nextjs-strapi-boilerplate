@@ -149,20 +149,19 @@ async function strapiRequest<
     const response = await fetch(requestUrl, mergedOptions);
 
     if (!response.ok) {
-      if (response.status === 401) {
-        throw new StrapiError("UnauthorizedError");
-      }
-      if (response.status === 403) {
-        throw new StrapiError("Bad Credentials");
-      }
-
-      throw new StrapiError(
-        "An error occurred while fetching data from Strapi",
-      );
+      if (response.status === 401) throw new StrapiError("UnauthorizedError");
+      if (response.status === 403) throw new StrapiError("Bad Credentials");
+      if (response.status === 400) throw new StrapiError("MalFormattedRequest");
+      if (response.status === 404) throw new StrapiError("NotFoundError");
+      throw new StrapiError(`HTTP error! status: ${response.status}`);
     }
 
     return await response.json();
   } catch (error) {
+    if (error instanceof StrapiError) {
+      throw error;
+    }
+
     throw new StrapiError(
       `Please check if your Strapi server is running and you set all the required tokens. ${error}`,
     );
