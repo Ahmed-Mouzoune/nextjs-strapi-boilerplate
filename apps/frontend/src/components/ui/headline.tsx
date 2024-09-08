@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const headlineVariants = cva("text-primary-700 scroll-m-20 text-xl font-bold", {
+const headlineVariants = cva("scroll-m-20 text-xl font-bold text-primary-700", {
   variants: {
     variant: {
       h1: "text-4xl font-bold",
