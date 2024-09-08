@@ -40,3 +40,10 @@ export class RateLimitError extends Error {
     this.name = "RateLimitError";
   }
 }
+
+export class ArticleValidationError extends PublicError {
+  constructor(message: string) {
+    super(message);
+    this.name = "ArticleValidationError";
+  }
+}

@@ -30,14 +30,12 @@ export default function ArticleCreate() {
 
   const { execute, isPending } = useServerAction(createArticleAction, {
     onSuccess() {
-      console.log(">log: success article");
       toast({
         title: `Article created successfully`,
         variant: "success",
       });
     },
     onError({ err }) {
-      console.log(">log: ", err);
       toast({
         title: `Oops, an error occurred..`,
         description: err.message,

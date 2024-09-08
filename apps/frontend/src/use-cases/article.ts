@@ -4,7 +4,11 @@ import {
   getArticles,
 } from "@/data-access/article";
 import type { Article, ArticleCreate } from "@/data-access/article/type";
-import { NotCreatedError, NotFoundError } from "./error";
+import {
+  ArticleValidationError,
+  NotCreatedError,
+  NotFoundError,
+} from "./error";
 
 export async function getArticlesUseCase(): Promise<Article[]> {
   const articles = await getArticles();
@@ -31,6 +35,10 @@ export async function createArticleUseCase(article: ArticleCreate) {
 
   if (!createdArticle) {
     throw new NotCreatedError();
+  }
+
+  if (createdArticle.error?.status === 400) {
+    throw new ArticleValidationError(createdArticle.error.message);
   }
 
   return createdArticle;

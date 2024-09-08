@@ -28,7 +28,7 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
   return articleAdapter(response?.data?.[0]);
 }
 
-export async function createArticle(article: ArticleCreate): Promise<boolean> {
+export async function createArticle(article: ArticleCreate): Promise<any> {
   const response = await strapiPost("api::article.article", {
     data: {
       slug: article.slug ?? slugify(article.title),
@@ -43,5 +43,5 @@ export async function createArticle(article: ArticleCreate): Promise<boolean> {
     },
   });
 
-  return response.status === 200;
+  return response;
 }

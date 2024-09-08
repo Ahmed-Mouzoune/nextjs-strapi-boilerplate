@@ -13,7 +13,9 @@ export type ArticleCreate = Pick<Article, "title" | "description" | "author"> &
 
 export const articleCreateSchema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
-  description: z.string().min(1, { message: "Description is required" }),
+  description: z
+    .string()
+    .min(50, { message: "Description of minimum 50 characters is required" }),
   author: z.string().min(1, { message: "Author is required" }),
 });
 
