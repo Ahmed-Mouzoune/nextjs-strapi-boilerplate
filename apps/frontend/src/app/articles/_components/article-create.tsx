@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 import { useServerAction } from "zsa-react";
 import { createArticleAction } from "../actions";
+
 export default function ArticleCreate() {
   const form = useForm<z.infer<typeof articleCreateSchema>>({
     resolver: zodResolver(articleCreateSchema),
@@ -30,12 +31,14 @@ export default function ArticleCreate() {
 
   const { execute, isPending } = useServerAction(createArticleAction, {
     onSuccess() {
+      console.log(">log: Article created successfuly");
       toast({
         title: `Article created successfully`,
         variant: "success",
       });
     },
     onError({ err }) {
+      console.log(">log: Article failed", err);
       toast({
         title: `Oops, an error occurred..`,
         description: err.message,
@@ -50,10 +53,7 @@ export default function ArticleCreate() {
 
   return (
     <Form {...form}>
-      <form
-        className="container space-y-3 pb-5"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
+      <form className="space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="title"
@@ -99,6 +99,8 @@ export default function ArticleCreate() {
         <LoaderButton isLoading={isPending} className="w-full">
           Create an article
         </LoaderButton>
+
+        <div onClick={() => toast({ title: "test popa" })}>test popup</div>
       </form>
     </Form>
   );

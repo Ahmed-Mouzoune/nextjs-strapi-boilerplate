@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@/lib/providers/theme-provider";
 import type { Metadata, Viewport } from "next";
 
 import Footer from "@/app/shared/footer";
@@ -6,6 +5,7 @@ import Header from "@/app/shared/header";
 
 import { FALLBACK_SEO } from "@/app.config";
 import { inter } from "@/app/fonts";
+import { Providers } from "@/lib/providers/providers";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { BreadcrumbResponsive } from "./_layouts/breadcrumb";
@@ -42,12 +42,12 @@ export default function RootLayout({
           "flex min-h-screen flex-col bg-background text-foreground",
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers>
           <Header />
           <BreadcrumbResponsive />
           {children}
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

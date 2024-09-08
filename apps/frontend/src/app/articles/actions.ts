@@ -14,5 +14,5 @@ export const createArticleAction = middlewareAction
       description: input.description,
       author: input.author,
     });
-    revalidatePath("/articles");
+    revalidatePath("/articles/create");
   });
