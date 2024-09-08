@@ -12,9 +12,9 @@ import {
 import { Input } from "@components/ui/input";
 import { LoaderButton } from "@components/ui/loader-button";
 import { Textarea } from "@components/ui/textarea";
-import { toast } from "@components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import type { z } from "zod";
 import { useServerAction } from "zsa-react";
 import { createArticleAction } from "../actions";
@@ -31,18 +31,11 @@ export default function ArticleCreate() {
 
   const { execute, isPending } = useServerAction(createArticleAction, {
     onSuccess() {
-      console.log(">log: Article created successfuly");
-      toast({
-        title: `Article created successfully`,
-        variant: "success",
-      });
+      toast.success(`Article created successfully`);
     },
     onError({ err }) {
-      console.log(">log: Article failed", err);
-      toast({
-        title: `Oops, an error occurred..`,
+      toast.error(`Oops, an error occurred..`, {
         description: err.message,
-        variant: "destructive",
       });
     },
   });
@@ -99,8 +92,6 @@ export default function ArticleCreate() {
         <LoaderButton isLoading={isPending} className="w-full">
           Create an article
         </LoaderButton>
-
-        <div onClick={() => toast({ title: "test popa" })}>test popup</div>
       </form>
     </Form>
   );

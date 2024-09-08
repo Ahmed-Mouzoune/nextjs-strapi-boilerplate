@@ -8,6 +8,7 @@ import { inter } from "@/app/fonts";
 import { Providers } from "@/lib/providers/providers";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import { Toaster } from "@components/ui/sonner";
 import { BreadcrumbResponsive } from "./_layouts/breadcrumb";
 
 export const metadata: Metadata = {
@@ -48,6 +49,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </Providers>
+        <Toaster />
       </body>
     </html>
   );
