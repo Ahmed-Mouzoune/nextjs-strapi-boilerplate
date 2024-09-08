@@ -152,3 +152,7 @@ export type StrapiUrlParams<TContentTypeUID extends Common.UID.ContentType> =
     | 'publicationState'
     | 'pagination'
   >
+
+export type StrapiUrlPostParams<
+  TContentTypeUID extends Common.UID.ContentType,
+> = Params.Pick<TContentTypeUID, 'data'>

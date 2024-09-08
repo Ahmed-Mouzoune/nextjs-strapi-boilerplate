@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
+import { Headline } from "./headline";
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -32,8 +33,8 @@ const CardTitle = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
-  // eslint-disable-next-line jsx-a11y/heading-has-content
-  <h3
+  <Headline
+    variant={"h3"}
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",

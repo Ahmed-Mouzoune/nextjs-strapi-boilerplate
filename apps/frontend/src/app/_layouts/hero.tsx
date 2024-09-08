@@ -51,6 +51,7 @@ export default function Hero() {
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4">
           <Link
             href="https://github.com/Ahmed-Mouzoune/nextjs-strapi-boilerplate"
+            target="_blank"
             className={cn(
               buttonVariants({
                 variant: "default",
@@ -64,6 +65,7 @@ export default function Hero() {
           </Link>
           <Link
             href="https://github.com/new?template_name=nextjs-strapi-boilerplate&template_owner=Ahmed-Mouzoune"
+            target="_blank"
             className={cn(
               buttonVariants({
                 size: "lg",

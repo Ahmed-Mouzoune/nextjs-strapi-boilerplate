@@ -15,7 +15,7 @@ export default async function PageList() {
   const pages = await getPagesUseCase();
 
   return (
-    <section className={cn("container mx-auto space-y-3 px-4 py-12 md:px-6")}>
+    <section className={cn("container space-y-3")}>
       <Headline variant={"h2"}>List of all pages created with strapi</Headline>
 
       {pages && (

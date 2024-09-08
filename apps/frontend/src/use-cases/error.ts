@@ -26,3 +26,24 @@ export class DateError extends PublicError {
     this.name = "DateError";
   }
 }
+
+export class NotCreatedError extends PublicError {
+  constructor() {
+    super("Resource not created");
+    this.name = "NotCreatedError";
+  }
+}
+
+export class RateLimitError extends Error {
+  constructor() {
+    super("Rate limit exceeded");
+    this.name = "RateLimitError";
+  }
+}
+
+export class ArticleValidationError extends PublicError {
+  constructor(message: string) {
+    super(message);
+    this.name = "ArticleValidationError";
+  }
+}
