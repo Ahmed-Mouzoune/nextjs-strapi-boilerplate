@@ -1,17 +1,18 @@
 import { APP_CONFIG, FALLBACK_SEO } from "@/app.config";
 import { env } from "@/env.mjs";
-import { StrapiError } from "@/use-cases/error";
+import { StrapiError } from "@use-cases/error";
+
 import type {
   GetValues,
+  StrapiGetParams,
+  StrapiPostParams,
   StrapiResponse,
-  StrapiResponseCollection,
-  StrapiUrlParams,
-  StrapiUrlPostParams,
-} from "@nextjs-strapi-boilerplate/backend";
+  StrapiResponseList,
+} from "@nextjs-strapi-boilerplate/strapi-backend";
 import type { Metadata } from "next";
-import qs from "qs";
 import type { ApiContentTypeUid } from "./type";
 import { API_ENDPOINTS } from "./type";
+import qs = require("qs");
 
 // Get base url of strapi API
 export function strapiGetUrl(path = ""): string {
@@ -42,37 +43,40 @@ export function strapiGetMetaData(
   const openGraph = {
     type: "website",
     locale: "fr_FR",
-    title: metadata.metaTitle,
-    description: metadata?.metaDescription,
-    url: metadata?.canonicalURL ?? pageUrl,
-    image: {
-      url: strapiGetMedia(metadata.metaImage?.data?.attributes?.url),
-      alt: metadata?.metaImage
-        ? (metadata.metaImage?.data?.attributes?.alternativeText ??
-          `Image seo ${APP_CONFIG.name}`)
-        : `Image seo ${APP_CONFIG.name}`,
-      width: metadata.metaImage
-        ? metadata.metaImage?.data?.attributes?.width
-        : 1200,
-      height: metadata.metaImage
-        ? metadata.metaImage?.data?.attributes?.height
-        : 630,
-    },
+    title: metadata.metaTitle as unknown as string,
+    description: metadata?.metaDescription as unknown as string,
+    url: pageUrl,
+    // TODO: strapiv5 - uncomment when ready
+    // url: metadata?.canonicalURL ?? pageUrl,
+    // image: {
+    //   url: strapiGetMedia(metadata.metaImage?.data?.attributes?.url),
+    //   alt: metadata?.metaImage
+    //     ? (metadata.metaImage?.data?.attributes?.alternativeText ??
+    //       `Image seo ${APP_CONFIG.name}`)
+    //     : `Image seo ${APP_CONFIG.name}`,
+    //   width: metadata.metaImage
+    //     ? metadata.metaImage?.data?.attributes?.width
+    //     : 1200,
+    //   height: metadata.metaImage
+    //     ? metadata.metaImage?.data?.attributes?.height
+    //     : 630,
+    // },
   };
 
   const twitterCard = {
     card: "summary_large_image",
     site: APP_CONFIG.twitter,
-    title: metadata?.metaTitle,
-    description: metadata?.metaDescription,
-    image: strapiGetMedia(metadata.metaImage?.data?.attributes?.url),
+    title: metadata?.metaTitle as unknown as string,
+    description: metadata?.metaDescription as unknown as string,
+    // TODO: strapiv5 - uncomment when ready
+    // image: strapiGetMedia(metadata.metaImage?.data?.attributes?.url),
   };
 
   return {
-    title: metadata.metaTitle,
-    description: metadata.metaDescription,
-    keywords: metadata.keywords,
-    robots: metadata.metaRobots,
+    title: metadata.metaTitle as unknown as string,
+    description: metadata.metaDescription as unknown as string,
+    // keywords: metadata.keywords,
+    // robots: metadata.metaRobots,
     creator: APP_CONFIG.creator,
     authors: APP_CONFIG.authors,
     openGraph,
@@ -113,8 +117,8 @@ type HttpMethod = "GET" | "POST";
 async function strapiRequest<
   TContentTypeUID extends ApiContentTypeUid,
   TParams extends
-    | StrapiUrlParams<TContentTypeUID>
-    | StrapiUrlPostParams<TContentTypeUID>,
+    | StrapiGetParams<TContentTypeUID>
+    | StrapiPostParams<TContentTypeUID>,
 >(
   apiUid: TContentTypeUID,
   urlParamsObject?: TParams,
@@ -164,18 +168,18 @@ async function strapiRequest<
 
 export async function strapiFetcher<
   TContentTypeUID extends ApiContentTypeUid,
-  TParams extends StrapiUrlParams<TContentTypeUID>,
+  TParams extends StrapiGetParams<TContentTypeUID>,
 >(
   apiUid: TContentTypeUID,
   urlParamsObject?: TParams,
   options: RequestInit = {},
-): Promise<StrapiResponseCollection<TContentTypeUID>> {
+): Promise<StrapiResponseList<TContentTypeUID>> {
   return strapiRequest(apiUid, urlParamsObject, options, "GET");
 }
 
 export async function strapiPost<
   TContentTypeUID extends ApiContentTypeUid,
-  TParams extends StrapiUrlPostParams<TContentTypeUID>,
+  TParams extends StrapiGetParams<TContentTypeUID>,
 >(
   apiUid: TContentTypeUID,
   urlParamsObject?: TParams,

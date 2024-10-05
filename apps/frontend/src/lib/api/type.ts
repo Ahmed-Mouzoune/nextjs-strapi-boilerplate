@@ -1,4 +1,4 @@
-import type { Common } from "@nextjs-strapi-boilerplate/backend";
+import type { Common } from "@nextjs-strapi-boilerplate/strapi-backend";
 
 export type ApiContentTypeUid = Extract<
   Common.UID.ContentType,
@@ -8,6 +8,10 @@ export type ApiContentTypeUid = Extract<
 export const API_ENDPOINTS: {
   [K in ApiContentTypeUid]: string;
 } = {
-  "api::page.page": "/pages",
+  // "api::page.page": "/pages",
   "api::article.article": "/articles",
+  "api::about.about": "",
+  "api::author.author": "",
+  "api::category.category": "",
+  "api::global.global": "",
 };

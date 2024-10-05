@@ -2,6 +2,7 @@
   "name": "@nextjs-strapi-boilerplate/strapi-backend",
   "version": "0.1.0",
   "private": true,
+  "types": "./share-types",
   "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
