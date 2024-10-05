@@ -46,9 +46,9 @@
     "zsa-react": "^0.2.2"
   },
   "devDependencies": {
-    "@nextjs-strapi-boilerplate/backend": "*",
     "@nextjs-strapi-boilerplate/eslint-config": "*",
     "@nextjs-strapi-boilerplate/prettier-config": "*",
+    "@nextjs-strapi-boilerplate/strapi-backend": "*",
     "@nextjs-strapi-boilerplate/tailwind-config": "*",
     "@types/node": "^20",
     "@types/qs": "^6.9.15",

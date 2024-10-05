@@ -12,7 +12,7 @@
     "init-env": "node init-env.js",
     "dev": "turbo run dev",
     "dev:front": "turbo run dev --filter=./apps/frontend",
-    "dev:back": "turbo run dev --filter=./apps/backend",
+    "dev:back": "turbo run dev --filter=./apps/strapi-backend",
     "build": "turbo run build",
     "clean": "turbo run clean",
     "clean:turbo": "git clean -xdf .turbo node_modules",
